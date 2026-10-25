@@ -1,0 +1,27 @@
+# Hämtar Scandinaviums evenemang varje natt och committar evenemang.json om något ändrats.
+name: Evenemang Scandinavium
+
+on:
+  schedule:
+    - cron: "15 3 * * *" # 03:15 UTC = 04:15/05:15 svensk tid, efter stängning
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  hamta:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/hamta-evenemang.mjs
+      - name: Committa om evenemangen ändrats
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add evenemang.json
+          git diff --cached --quiet -- evenemang.json || git commit -m "Uppdatera evenemang från Scandinavium"
+          git push

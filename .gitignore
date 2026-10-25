@@ -1,0 +1,4 @@
+# Impeccables tärningsslag och granskningsbilder är lokala arbetsfiler
+.impeccable/questions/
+.impeccable/review/
+.impeccable/hook.cache.json

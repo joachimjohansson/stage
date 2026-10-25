@@ -1,0 +1,53 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "forslag-a-hallplatsen.html"
+        ],
+        "createdAt": "2026-10-25T14:44:13.652Z",
+        "reason": "agent verified: computed padding is 16-44px via clamp() in the browser; clear photo panes hold only images"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "forslag-b-variete.html"
+        ],
+        "createdAt": "2026-10-25T14:44:14.087Z",
+        "reason": "agent verified: computed padding is 16-44px via clamp() in the browser; clear photo panes hold only images"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "forslag-c-fasaden.html"
+        ],
+        "createdAt": "2026-10-25T14:44:14.543Z",
+        "reason": "agent verified: computed padding is 16-44px via clamp() in the browser; clear photo panes hold only images"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "forslag-b-variete.html"
+        ],
+        "createdAt": "2026-10-25T14:44:14.989Z",
+        "reason": "agent verified: h1/h2 use clamp() display sizes (2-9.5rem); detector reads them as body size"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "forslag-c-fasaden.html"
+        ],
+        "createdAt": "2026-10-25T14:44:15.394Z",
+        "reason": "agent verified: h1/h2 use clamp() display sizes (2-9.5rem); detector reads them as body size"
+      }
+    ]
+  }
+}
