@@ -1,7 +1,7 @@
 ---
 version: 1
-slug: "forslag-b-variete-html"
-primary_target: "forslag-b-variete.html"
+slug: "index-html"
+primary_target: "index.html"
 related_targets: []
 ---
 

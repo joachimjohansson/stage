@@ -3,24 +3,284 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Stage Door – tre förslag</title>
+<title>Stage Door – Bar & restaurang på Berzeliigatan 12, Göteborg</title>
+<meta name="description" content="Bar och restaurang på Berzeliigatan 12 i Göteborg. Vällagad mat från en prisvärd meny, utvalda viner och en stilla öl i baren. Öppet alla dagar, tidigare vid större evenemang.">
+<link rel="canonical" href="https://joachimjohansson.github.io/stage/">
+<meta name="theme-color" content="#2E4033">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="sv_SE">
+<meta property="og:site_name" content="Stage Door">
+<meta property="og:title" content="Stage Door – Bar & restaurang på Berzeliigatan 12, Göteborg">
+<meta property="og:description" content="Vällagad mat, utvalda viner och en gemytlig atmosfär. Öppet alla dagar.">
+<meta property="og:url" content="https://joachimjohansson.github.io/stage/">
+<meta property="og:image" content="https://joachimjohansson.github.io/stage/original/bilder/untitled-hdr2.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="476">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":["BarOrPub","Restaurant"],"name":"Stage Door","url":"https://joachimjohansson.github.io/stage/","image":"https://joachimjohansson.github.io/stage/original/bilder/untitled-hdr2.jpg","telephone":"+46 31 16 12 52","email":"info@stagedoor.se","hasMenu":"https://joachimjohansson.github.io/stage/#programmet","acceptsReservations":true,
+"address":{"@type":"PostalAddress","streetAddress":"Berzeliigatan 12","postalCode":"412 53","addressLocality":"Göteborg","addressCountry":"SE"},
+"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday","Monday","Tuesday","Wednesday","Thursday"],"opens":"16:00","closes":"01:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"15:00","closes":"02:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"14:00","closes":"02:00"}]}
+</script>
+<!-- Loggans typsnitt hämtas direkt så att STAGE DOOR inte först visas i reservtypsnittet -->
+<link rel="preload" href="https://static.wfonts.com/data/2016/07/03/victorian-std/VictorianStd.woff" as="font" type="font/woff" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Recursive:wght,CASL@400..800,0.3&display=swap" rel="stylesheet">
 <style>
-body{font:1.05rem/1.5 system-ui,sans-serif;background:#f3f3f1;color:#1b1b1b;margin:0;padding:32px 16px}
-main{max-width:760px;margin:auto}
-h1{margin:0 0 8px}
-a{display:block;background:#fff;border:1px solid #d6d6d2;border-radius:8px;padding:18px 20px;margin-top:14px;color:inherit;text-decoration:none}
-a:hover{border-color:#1b1b1b}
-a b{font-size:1.2rem}
-a span{display:block;color:#555;margin-top:4px}
+@font-face{font-family:'VictorianStd';src:url('https://static.wfonts.com/data/2016/07/03/victorian-std/VictorianStd.woff') format('woff');font-display:swap}
+:root{
+  /* Pergament, mörkgrönt, varmrött och rödguld */
+  --green:#2E4033; --green-deep:#213025; --copper:#8B4538; --copper-light:#A25446; --copper-deep:#C88D44; --gold-light:#DF9F53;
+  --white:#FAF7F2;
+  /* Recursive: fyra roller. Slant och Casual gäller hela sidan */
+  --f:"Recursive",system-ui,sans-serif; --casl:0.3; --slnt:0;
+  --size-h1:42px; --w-h1:760; --t-h1:-0.025em;
+  --size-h2:30px; --w-h2:640; --t-h2:0em;
+  --size-h3:22px; --w-h3:550; --t-h3:-0.01em;
+  --size-body:16px; --w-body:420; --t-body:0em;
+  --size-meta:14px; --w-meta:500; --t-meta:0.02em;
+  /* Avståndsskala i steg om 4 */
+  --sp-4:4px; --sp-8:8px; --sp-12:12px; --sp-16:16px; --sp-20:20px; --sp-24:24px; --sp-32:32px; --sp-48:48px; --sp-56:56px; --sp-72:72px; --sp-104:104px;
+  --mint:#EFE8DE; --rule:rgba(250,247,242,.55);
+}
+*{box-sizing:border-box;margin:0}
+html{scrollbar-color:var(--copper) var(--green-deep)}
+body{background:var(--green);color:var(--white);font-family:var(--f);font-size:var(--size-body);font-weight:calc(var(--w-body) + 30);line-height:1.6;letter-spacing:calc(var(--t-body) + 0.005em);font-variation-settings:"CASL" var(--casl),"slnt" var(--slnt)}
+::selection{background:var(--copper);color:var(--white)}
+a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--copper);outline-offset:3px}
+img{display:block;max-width:100%;height:auto}
+picture{display:contents}
+picture source{display:none}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+
+/* Affischen */
+.poster{padding:var(--sp-24) 0 var(--sp-32);text-align:center}
+.poster nav{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 24px;border-bottom:1px solid var(--rule);padding-bottom:var(--sp-12);margin-bottom:var(--sp-32)}
+.poster nav a{text-decoration:none}
+.poster nav a:hover{color:var(--gold-light);text-decoration:underline}
+.tonight{display:flex;justify-content:center;align-items:center;gap:14px}
+.tonight::before,.tonight::after{content:"";width:clamp(24px,6vw,80px);height:3px;background:var(--copper)}
+.logo{margin:var(--sp-12) auto var(--sp-24);width:min(100%,640px)}
+.logo svg{display:block;width:100%;height:auto}
+.band{display:inline-block;background:var(--copper);color:var(--white);font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1;letter-spacing:var(--t-h3);padding:.22em .7em .26em}
+.address{display:flex;justify-content:center;align-items:baseline;gap:clamp(10px,3vw,28px);flex-wrap:wrap;font-family:var(--f);font-size:var(--size-body);font-weight:var(--w-h3);line-height:1.4;letter-spacing:var(--t-body);margin-top:var(--sp-32)}
+.address a,.addr{text-decoration:none}
+.address a:hover,.addr:hover{color:var(--gold-light)}
+.photo{margin:var(--sp-24) 0 var(--sp-32);border:3px solid var(--white)}
+.photo img{width:100%;height:clamp(140px,24vh,480px);object-fit:cover;filter:saturate(.9) contrast(1.05)}
+/* Öppettider i två kolumner: dagar vänster, tider höger, samma storlek */
+.bill{border-block:1px solid var(--white)}
+.bill div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px max(8px,calc((100% - 480px) / 2))}
+.bill div+div{border-top:1px solid var(--rule)}
+.bill small,.bill b{font-family:var(--f);font-size:var(--size-body);font-weight:var(--w-h3);line-height:1.4;letter-spacing:var(--t-body);font-variant-numeric:tabular-nums}
+.bill small{text-align:left;font-weight:450}
+.bill b{text-align:right;white-space:nowrap;color:var(--gold-light)}
+.early{margin-top:var(--sp-12);color:var(--mint);text-align:left;padding-inline:max(8px,calc((100% - 480px) / 2))}
+
+/* Sektioner */
+section{padding-block:clamp(56px,8vw,104px)}
+.title{text-align:center;margin-bottom:var(--sp-24)}
+.title h2{font-family:var(--f);font-size:var(--size-h1);font-weight:var(--w-h1);line-height:1;letter-spacing:var(--t-h1)}
+.programme .title h2{color:var(--green)}
+.title p{margin-top:var(--sp-12);color:var(--mint)}
+.ornament{display:flex;align-items:center;gap:14px;justify-content:center;margin:0 auto 18px;width:min(320px,80%)}
+.ornament::before,.ornament::after{content:"";flex:1;height:1px;background:var(--rule)}
+.ornament span{width:10px;height:10px;background:var(--copper);transform:rotate(45deg)}
+
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
+/* Om och Kontakt delar mörk botten, så bara en sektionsmarginal mellan dem */
+#scenen{padding-bottom:0}
+.about p::first-letter{float:left;font-family:var(--f);font-size:calc(var(--size-h1) * 2.8);font-weight:var(--w-h1);line-height:.8;color:var(--gold-light);margin:.06em .1em 0 0}
+.about img{border:3px solid var(--white)}
+
+/* Programmet = menyn, på ljus affischpapp */
+.programme{background:var(--white);color:var(--green-deep);font-weight:var(--w-body);line-height:1.55;letter-spacing:var(--t-body)}
+.programme .title p{color:var(--copper)}
+.meta,.programme .title p,.dish em,footer{font-size:var(--size-meta);font-weight:var(--w-meta);letter-spacing:var(--t-meta)}
+.programme .ornament::before,.programme .ornament::after{background:rgba(33,48,37,.35)}
+.act{margin-top:var(--sp-72)}
+.act h3{text-align:center;font-family:var(--f);font-size:var(--size-h2);font-weight:var(--w-h2);line-height:1;letter-spacing:var(--t-h2);color:var(--copper);padding-bottom:15px;border-bottom:1px solid var(--green-deep)}
+/* Enkla block och en flexrad utan baslinje/radbrytning: Safari på iOS 27 räknade fel höjd på rutnät och baslinjejusterade flexrader */
+.dish{display:block;padding:15px 0;border-bottom:1px solid rgba(33,48,37,.2)}
+.dish b{font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1.2;letter-spacing:var(--t-h3)}
+.dish .price{font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1.2;letter-spacing:var(--t-h3);color:var(--copper);white-space:nowrap;font-variant-numeric:tabular-nums}
+.dish-head{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--sp-16)}
+.dish p{margin-top:var(--sp-4);max-width:64ch;color:var(--green)}
+.dish em{line-height:1;font-style:normal;margin-left:var(--sp-8)}
+.cols{display:block}
+@media (min-width:761px){.cols{display:grid;grid-template-columns:1fr 1fr;column-gap:56px}}
+
+/* Kranen */
+.taps{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
+.taps img{border:3px solid var(--white)}
+.blank{border:3px solid var(--white);padding:clamp(18px,3vw,32px);text-align:center}
+.blank .tag{display:inline-block;background:var(--copper);padding:6px 12px;margin-bottom:16px}
+.blank ol{list-style:none;padding:0}
+.blank li{display:flex;gap:12px;align-items:baseline;padding:12px 0;font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1;letter-spacing:var(--t-h3)}
+.blank li::after{content:"";flex:1;border-bottom:2px dotted var(--rule)}
+
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.gallery img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;border:3px solid var(--white)}
+.gallery picture:first-child img{grid-column:span 2;aspect-ratio:auto}
+
+/* Biljettkassan */
+.boxoffice{text-align:center}
+.boxoffice .big{display:block;font-family:var(--f);font-size:var(--size-h2);font-weight:var(--w-h2);line-height:1.2;letter-spacing:var(--t-h2);text-decoration:none;margin:.15em 0}
+.boxoffice .big:hover{color:var(--gold-light)}
+.boxoffice p{max-width:52ch;margin-inline:auto}
+footer{border-top:1px solid var(--white);padding:24px 0;text-align:center;color:var(--mint)}
+
+@media (min-width:1024px){
+  :root{--size-body:17px}
+}
+@media (max-width:760px){
+  :root{--size-h1:36px}
+  .about,.taps{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}
+  .poster{min-height:100svh;display:flex;padding-block:var(--sp-16)}
+  /* Tätare luft så att hela förstasidan ryms på en iPhone-skärm */
+  .poster nav{padding-bottom:var(--sp-8);margin-bottom:var(--sp-16)}
+  .logo{margin:var(--sp-8) auto var(--sp-16)}
+  .photo{margin:var(--sp-16) 0 var(--sp-20)}
+  .bill div{padding-block:var(--sp-8)}
+  .early{margin-top:var(--sp-8);line-height:1.4}
+  .address{margin-top:var(--sp-16)}
+  .poster>.wrap{display:flex;flex-direction:column}
+  .photo{flex:1 1 0;min-height:90px;position:relative}
+  .photo img{position:absolute;inset:0;width:100%;height:100%}
+  /* Mobil: menyn vänsterställd */
+  .programme .title,.act h3{text-align:left}
+  .act{margin-top:var(--sp-56)}
+}
 </style>
 </head>
 <body>
 <main>
-  <h1>Stage Door – tre förslag</h1>
-  <p>Allt innehåll är hämtat från stagedoor.se. Öllistan är en platshållare tills kunden skickar den.</p>
-  <a href="forslag-a-hallplatsen.html"><b>A. Hållplatsen</b><span>Göteborgs hållplatsskyltar: marinblå emalj, linjeskiva "12" och en avgångstavla som visar om det är öppet just nu.</span></a>
-  <a href="forslag-b-variete.html"><b>B. Varieté</b><span>Kvällens affisch: flaskgrönt, kopparrött och trätyper. Menyn är kvällens program.</span></a>
-  <a href="forslag-c-fasaden.html"><b>C. Fasaden</b><span>Glasfasaden mot Berzeliigatan: svarta spröjsar, en bärnstensruta som tänds när baren är öppen.</span></a>
+  <div class="poster">
+    <div class="wrap">
+      <nav aria-label="Huvudmeny">
+        <a href="#programmet">Meny</a><a href="#scenen">Om</a><a href="#kassan">Kontakt</a>
+      </nav>
+      <p class="tonight" id="tonight" role="status">Öppet i kväll</p>
+      <h1 class="logo"><svg viewBox="0 0 430 94" role="img" aria-label="Stage Door"><!-- Ramen ritad efter originalets mått: 3 px linje, 2 px in från kanten, hörnen urgröpta med radie 10 från hörnpunkten. Orden står på originalets x-lägen 51 och 229. --><path d="M9.8 2H420.2A10 10 0 0 0 428 9.8V84.2A10 10 0 0 0 420.2 92H9.8A10 10 0 0 0 2 84.2V9.8A10 10 0 0 0 9.8 2Z" fill="none" stroke="#FAF7F2" stroke-width="3"/><text y="66" fill="#FAF7F2" font-family="VictorianStd, serif" font-weight="400" style="font-synthesis:none" font-size="57.35"><tspan x="51">STAGE</tspan><tspan x="229">DOOR</tspan></text></svg></h1>
+      <p class="band">Bar & Restaurang</p>
+      <div class="photo">
+        <picture><source srcset="bilder/untitled-hdr2-800.avif 800w, bilder/untitled-hdr2.avif 1200w" sizes="(min-width:1152px) 1114px, calc(100vw - 38px)" type="image/avif"><img fetchpriority="high" src="original/bilder/untitled-hdr2.jpg" alt="Matsalen på Stage Door med väggar fulla av inramade artistporträtt" width="1200" height="476"></picture>
+      </div>
+      <div class="bill">
+        <div data-days="0 1 2 3 4"><small>Söndag till torsdag</small><b>16-01</b></div>
+        <div data-days="5"><small>Fredag</small><b>15-02</b></div>
+        <div data-days="6"><small>Lördag</small><b>14-02</b></div>
+      </div>
+      <p class="early" id="early">Vi öppnar dessutom tidigare under större evenemang.</p>
+      <p class="address"><a href="https://www.google.com/maps/search/?api=1&amp;query=Berzeliigatan+12+G%C3%B6teborg">Berzeliigatan 12, Göteborg</a></p>
+    </div>
+  </div>
+
+  <section id="programmet" class="programme">
+    <div class="wrap">
+      <div class="title">
+        <div class="ornament"><span></span></div>
+        <h2>Meny</h2>
+        <p>Innehåller (G) gluten · (L) laktos · (N) nötter</p>
+      </div>
+      <!-- Menyn står direkt i HTML: Safari på iPhone räknade inte om sektionens höjd när den lades in med JavaScript -->
+      <div id="menu">
+        <div class="act"><h3>Starters &amp; Sharers</h3><div class="cols">
+          <div class="dish"><div class="dish-head"><b>Gratinerade nachos<em>(L)</em></b><span class="price">129 kr</span></div>
+            <p>Gräddfil, tomatsalsa, pico de gallo + chiligryta med köttfärs 149 kr</p></div>
+          <div class="dish"><div class="dish-head"><b>Barsnacks<em>(L)</em></b><span class="price">139 kr</span></div>
+            <p>Ölkorv, oliver, goudaost, nachos, aïoli</p></div>
+          <div class="dish"><div class="dish-head"><b>Mixplate<em>(L) (G)</em></b><span class="price">139 kr</span></div>
+            <p>Lökringar, Mozzarella Sticks, pommes frites, aïoli</p></div>
+          <div class="dish"><div class="dish-head"><b>Hot Wings<em>(L)</em></b><span class="price">79 / 149 / 219 kr</span></div>
+            <p>Frank’s Hot Sauce, aïoli. Välj mellan 6, 12 eller 18 vingar</p></div>
+        </div></div>
+        <div class="act"><h3>The Classics</h3><div class="cols">
+          <div class="dish"><div class="dish-head"><b>Smashed Burger Classic<em>(G) (L)</em></b><span class="price">199 kr</span></div>
+            <p>Högrev &amp; bringa, cheddarost, bacon glacerat med lönnsirap. Serveras med pommes och aïoli</p></div>
+          <div class="dish"><div class="dish-head"><b>Smashed Burger Mexican<em>(G) (L)</em></b><span class="price">199 kr</span></div>
+            <p>Högrev &amp; bringa, cheddarost, pico de gallo, Frank’s Hot Sauce. Serveras med pommes och aïoli</p></div>
+          <div class="dish"><div class="dish-head"><b>Smashed Burger Vegan Classic<em>(G) (L)</em></b><span class="price">199 kr</span></div>
+            <p>Vegansk burgare. Serveras med pommes och aïoli</p></div>
+          <div class="dish"><div class="dish-head"><b>Smashed Burger Vegan Mexican<em>(G) (L)</em></b><span class="price">199 kr</span></div>
+            <p>Vegansk burgare, pico de gallo, Frank’s Hot Sauce. Serveras med pommes och aïoli</p></div>
+          <div class="dish"><div class="dish-head"><b>Baby Back Ribs<em>(L)</em></b><span class="price">299 kr</span></div>
+            <p>Ribs, pommes frites, Cole Slaw, majs</p></div>
+          <div class="dish"><div class="dish-head"><b>Caesarsallad<em>(G) (L)</em></b><span class="price">199 kr</span></div>
+            <p>Romansallad, kyckling, krutonger, tomat, bacon, Grana Padano, caesardressing</p></div>
+          <div class="dish"><div class="dish-head"><b>Pasta med kyckling<em>(G) (L)</em></b><span class="price">199 kr</span></div>
+            <p>Penne, lök, chili, kyckling, krämig vitvinssås</p></div>
+          <div class="dish"><div class="dish-head"><b>Fish &amp; Chips<em>(G) (L)</em></b><span class="price">199 kr</span></div>
+            <p>Med remouladsås</p></div>
+        </div></div>
+        <div class="act"><h3>Desserts</h3><div class="cols">
+          <div class="dish"><div class="dish-head"><b>Friterad camembert<em>(G) (L) (N)</em></b><span class="price">99 kr</span></div>
+            <p>Persilja, hjortronsylt</p></div>
+          <div class="dish"><div class="dish-head"><b>Choklad glassbakelse<em>(G) (L) (N)</em></b><span class="price">119 kr</span></div>
+            <p>Chokladglass, hasselnöt, sabayonne</p></div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="scenen">
+    <div class="wrap about">
+      <p>Precis som namnet antyder är Stage Door ett populärt inneställe för stadens alla musik-, teater- och varietéartister. Här kan Du alltid äta en bit mat från vår prisvärda meny, njuta ett glas gott vin eller varför inte bara en stilla öl i vår trivsamma bar. Vällagad mat, utvalda viner och en gemytlig atmosfär gör att vi tror att Du kommer få en trevlig kväll!</p>
+      <picture><source srcset="bilder/dsc-7083-800.avif 800w, bilder/dsc-7083.avif 1200w" sizes="(min-width:761px) 50vw, 100vw" type="image/avif"><img src="original/bilder/dsc-7083.jpg" alt="Kopparbardisken och väggen av flaskor" width="1200" height="800" loading="lazy" decoding="async"></picture>
+    </div>
+    <div class="wrap gallery" style="margin-top:clamp(28px,4vw,48px)">
+      <picture><source srcset="bilder/untitled-panorama2-800.avif 800w, bilder/untitled-panorama2.avif 1200w" sizes="(min-width:761px) 50vw, 100vw" type="image/avif"><img src="original/bilder/untitled-panorama2.jpg" alt="Fasaden med uteservering på Berzeliigatan" width="1200" height="563" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="bilder/dsc-7310.avif" type="image/avif"><img src="original/bilder/dsc-7310.jpg" alt="Kristallkrona framför porträttväggen" width="1067" height="1600" loading="lazy" decoding="async"></picture>
+      <picture><source srcset="bilder/dsc-7087.avif" type="image/avif"><img src="original/bilder/dsc-7087.jpg" alt="Bardisken med barstolar" width="820" height="1600" loading="lazy" decoding="async"></picture>
+    </div>
+  </section>
+
+  <!-- Kranen är gömd tills öllistan finns -->
+  <section id="kranen" hidden>
+    <div class="wrap taps">
+      <div class="blank">
+        <span class="tag caps">Platshållare – öllista från Stage Door</span>
+        <h2 style="font-family:var(--f);font-size:var(--size-h2);font-weight:var(--w-h2);line-height:1;letter-spacing:var(--t-h2);margin-bottom:12px">Från kranen</h2>
+        <ol aria-label="Öllista saknas ännu"><li>Kran 1</li><li>Kran 2</li><li>Kran 3</li><li>Kran 4</li></ol>
+      </div>
+      <picture><source srcset="bilder/dsc-7286.avif" type="image/avif"><img src="original/bilder/dsc-7286.jpg" alt="Ölkranar i mässing" width="1200" height="800" loading="lazy" decoding="async"></picture>
+    </div>
+  </section>
+
+  <section id="kassan" class="boxoffice">
+    <div class="wrap">
+      <div class="ornament"><span></span></div>
+      <h2 style="font-family:var(--f);font-size:var(--size-h1);font-weight:var(--w-h1);line-height:1;letter-spacing:var(--t-h1);color:var(--gold-light)">Boka bord</h2>
+      <p style="margin-top:16px">Ring eller mejla oss, så återkommer vi så snart vi kan.</p>
+      <a class="big" href="tel:+4631161252">031-16 12 52</a>
+      <a class="big" href="mailto:info@stagedoor.se">info@stagedoor.se</a>
+      <p style="margin-top:20px"><a class="addr" href="https://www.google.com/maps/search/?api=1&amp;query=Berzeliigatan+12+G%C3%B6teborg">Berzeliigatan 12 · 412 53 Göteborg</a></p>
+    </div>
+  </section>
 </main>
+<footer><div class="wrap">Stage Door · Bar & Restaurang · Berzeliigatan 12, Göteborg</div></footer>
+
+<script src="oppet.js"></script>
+<script>
+let events = [];
+const earlyDefault = early.textContent;
+function tick() {
+  const s = stageStatus(new Date(), events);
+  early.textContent = s.event ? `Idag öppnar vi tidigare: ${s.event.title} börjar ${s.event.time} på Scandinavium.` : earlyDefault;
+  // Stängningstiden ligger alltid efter midnatt, så "ikväll" gäller även efter tolv
+  tonight.textContent = s.open ? `Ikväll stänger vi klockan ${s.closes}` : `Idag öppnar vi klockan ${s.opens}`;
+  // Raden som gäller idag först, sedan resten i veckoordning
+  const bill = document.querySelector(".bill");
+  const rows = [...bill.children];
+  const at = rows.findIndex(r => r.dataset.days.split(" ").includes(String(s.day)));
+  bill.append(...rows.slice(at), ...rows.slice(0, at));
+}
+tick(); setInterval(tick, 30000);
+// Evenemang på Scandinavium hämtas dagligen av scripts/hamta-evenemang.mjs; utan filen gäller ordinarie tider
+fetch("evenemang.json").then(r => r.ok ? r.json() : { events: [] }).then(d => { events = d.events || []; tick(); }).catch(() => {});
+</script>
 </body>
 </html>
