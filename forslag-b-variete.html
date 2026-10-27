@@ -16,14 +16,17 @@
   /* Recursive: fyra roller. Slant och Casual gäller hela sidan */
   --f:"Recursive",system-ui,sans-serif; --casl:0.3; --slnt:0;
   --size-h1:42px; --w-h1:760; --t-h1:-0.025em;
-  --size-h2:27px; --w-h2:640; --t-h2:0em;
+  --size-h2:30px; --w-h2:640; --t-h2:0em;
   --size-h3:22px; --w-h3:550; --t-h3:-0.01em;
   --size-body:16px; --w-body:420; --t-body:0em;
+  --size-meta:14px; --w-meta:500; --t-meta:0.02em;
+  /* Avståndsskala i steg om 4 */
+  --sp-4:4px; --sp-8:8px; --sp-12:12px; --sp-16:16px; --sp-20:20px; --sp-24:24px; --sp-32:32px; --sp-48:48px; --sp-56:56px; --sp-72:72px; --sp-104:104px;
   --mint:#EFE8DE; --rule:rgba(250,247,242,.55);
 }
 *{box-sizing:border-box;margin:0}
 html{scrollbar-color:var(--copper) var(--green-deep)}
-body{background:var(--green);color:var(--white);font-family:var(--f);font-size:var(--size-body);font-weight:var(--w-body);line-height:1.55;letter-spacing:var(--t-body);font-variation-settings:"CASL" var(--casl),"slnt" var(--slnt)}
+body{background:var(--green);color:var(--white);font-family:var(--f);font-size:var(--size-body);font-weight:calc(var(--w-body) + 30);line-height:1.6;letter-spacing:calc(var(--t-body) + 0.005em);font-variation-settings:"CASL" var(--casl),"slnt" var(--slnt)}
 ::selection{background:var(--copper);color:var(--white)}
 a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:2px}
 :focus-visible{outline:3px solid var(--copper);outline-offset:3px}
@@ -33,33 +36,35 @@ picture source{display:none}
 .wrap{width:min(1120px,100% - 32px);margin-inline:auto}
 
 /* Affischen */
-.poster{padding:clamp(20px,4vw,56px) 0;text-align:center}
-.poster nav{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 24px;border-bottom:1px solid var(--rule);padding-bottom:14px;margin-bottom:clamp(20px,3vw,36px)}
+.poster{padding:var(--sp-24) 0 var(--sp-32);text-align:center}
+.poster nav{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 24px;border-bottom:1px solid var(--rule);padding-bottom:var(--sp-12);margin-bottom:var(--sp-32)}
 .poster nav a{text-decoration:none}
 .poster nav a:hover{color:var(--gold-light);text-decoration:underline}
 .tonight{display:flex;justify-content:center;align-items:center;gap:14px}
 .tonight::before,.tonight::after{content:"";width:clamp(24px,6vw,80px);height:3px;background:var(--copper)}
-.logo{margin:.35em auto .5em;width:min(100%,820px)}
+.logo{margin:var(--sp-12) auto;width:min(100%,640px)}
 .logo svg{display:block;width:100%;height:auto}
-.band{display:inline-block;background:var(--copper);color:var(--white);font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1;letter-spacing:var(--t-h3);padding:.22em .7em .26em;margin-bottom:clamp(16px,3vw,28px)}
-.address{display:flex;justify-content:center;align-items:baseline;gap:clamp(10px,3vw,28px);flex-wrap:wrap;font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1.1;letter-spacing:var(--t-h3);margin-top:clamp(16px,2.5vw,24px)}
-.photo{margin:clamp(20px,3vw,36px) 0;border:3px solid var(--white)}
-.photo img{width:100%;aspect-ratio:21/9;object-fit:cover;filter:saturate(.9) contrast(1.05)}
+.band{display:inline-block;background:var(--copper);color:var(--white);font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1;letter-spacing:var(--t-h3);padding:.22em .7em .26em}
+.address{display:flex;justify-content:center;align-items:baseline;gap:clamp(10px,3vw,28px);flex-wrap:wrap;font-family:var(--f);font-size:var(--size-body);font-weight:var(--w-h3);line-height:1.4;letter-spacing:var(--t-body);margin-top:var(--sp-32)}
+.address a,.addr{text-decoration:none}
+.address a:hover,.addr:hover{color:var(--gold-light)}
+.photo{margin:var(--sp-32) 0;border:3px solid var(--white)}
+.photo img{width:100%;height:clamp(140px,24vh,480px);object-fit:cover;filter:saturate(.9) contrast(1.05)}
 /* Öppettider i två kolumner: dagar vänster, tider höger, samma storlek */
 .bill{border-block:1px solid var(--white)}
 .bill div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px max(8px,calc((100% - 480px) / 2))}
 .bill div+div{border-top:1px solid var(--rule)}
-.bill small,.bill b{font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1.1;letter-spacing:var(--t-h3);font-variant-numeric:tabular-nums}
+.bill small,.bill b{font-family:var(--f);font-size:var(--size-body);font-weight:var(--w-h3);line-height:1.4;letter-spacing:var(--t-body);font-variant-numeric:tabular-nums}
 .bill small{text-align:left;font-weight:450}
 .bill b{text-align:right;white-space:nowrap;color:var(--gold-light)}
-.early{margin-top:10px;color:var(--mint)}
+.early{margin-top:var(--sp-12);color:var(--mint);text-align:left;padding-inline:max(8px,calc((100% - 480px) / 2))}
 
 /* Sektioner */
 section{padding-block:clamp(56px,8vw,104px)}
-.title{text-align:center;margin-bottom:clamp(28px,4vw,48px)}
+.title{text-align:center;margin-bottom:var(--sp-24)}
 .title h2{font-family:var(--f);font-size:var(--size-h1);font-weight:var(--w-h1);line-height:1;letter-spacing:var(--t-h1)}
 .programme .title h2{color:var(--green)}
-.title p{margin-top:12px;color:var(--mint)}
+.title p{margin-top:var(--sp-12);color:var(--mint)}
 .ornament{display:flex;align-items:center;gap:14px;justify-content:center;margin:0 auto 18px;width:min(320px,80%)}
 .ornament::before,.ornament::after{content:"";flex:1;height:1px;background:var(--rule)}
 .ornament span{width:10px;height:10px;background:var(--copper);transform:rotate(45deg)}
@@ -69,17 +74,21 @@ section{padding-block:clamp(56px,8vw,104px)}
 .about img{border:3px solid var(--white)}
 
 /* Programmet = menyn, på ljus affischpapp */
-.programme{background:var(--white);color:var(--green-deep);display:flow-root;position:relative}
+.programme{background:var(--white);color:var(--green-deep);font-weight:var(--w-body);line-height:1.55;letter-spacing:var(--t-body)}
 .programme .title p{color:var(--copper)}
+.meta,.programme .title p,.dish em,footer{font-size:var(--size-meta);font-weight:var(--w-meta);letter-spacing:var(--t-meta)}
 .programme .ornament::before,.programme .ornament::after{background:rgba(33,48,37,.35)}
-.act{margin-top:clamp(28px,4vw,44px)}
+.act{margin-top:var(--sp-72)}
 .act h3{text-align:center;font-family:var(--f);font-size:var(--size-h2);font-weight:var(--w-h2);line-height:1;letter-spacing:var(--t-h2);color:var(--copper);padding-bottom:12px;border-bottom:1px solid var(--green-deep)}
-.dish{display:grid;grid-template-columns:1fr auto;gap:2px 24px;padding:16px 0;border-bottom:1px solid rgba(33,48,37,.2)}
-.dish b{font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1.15;letter-spacing:var(--t-h3)}
-.dish .price{font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1.15;letter-spacing:var(--t-h3);color:var(--copper);white-space:nowrap;font-variant-numeric:tabular-nums}
-.dish p{grid-column:1/-1;max-width:64ch;color:var(--green)}
-.dish em{font-family:var(--f);font-size:var(--size-body);font-weight:var(--w-body);line-height:1;letter-spacing:var(--t-body);font-style:normal;margin-left:10px}
-.cols{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(360px,100%),1fr));column-gap:56px}
+/* Enkla block och en flexrad utan baslinje/radbrytning: Safari på iOS 27 räknade fel höjd på rutnät och baslinjejusterade flexrader */
+.dish{display:block;padding:var(--sp-12) 0;border-bottom:1px solid rgba(33,48,37,.2)}
+.dish b{font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1.2;letter-spacing:var(--t-h3)}
+.dish .price{font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1.2;letter-spacing:var(--t-h3);color:var(--copper);white-space:nowrap;font-variant-numeric:tabular-nums}
+.dish-head{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--sp-16)}
+.dish p{margin-top:var(--sp-4);max-width:64ch;color:var(--green)}
+.dish em{line-height:1;font-style:normal;margin-left:var(--sp-8)}
+.cols{display:block}
+@media (min-width:761px){.cols{display:grid;grid-template-columns:1fr 1fr;column-gap:56px}}
 
 /* Kranen */
 .taps{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
@@ -101,28 +110,27 @@ section{padding-block:clamp(56px,8vw,104px)}
 .boxoffice p{max-width:52ch;margin-inline:auto}
 footer{border-top:1px solid var(--white);padding:24px 0;text-align:center;color:var(--mint)}
 
+@media (min-width:1024px){
+  :root{--size-body:17px}
+}
 @media (max-width:760px){
+  :root{--size-h1:36px}
   .about,.taps{grid-template-columns:1fr}
-  /* Öppettiderna krymper med skärmen så att raden ryms */
-  .bill small,.bill b{font-size:min(var(--size-h3), 5.6vw)}
   .gallery{grid-template-columns:1fr 1fr}
-  .poster{min-height:100svh;display:flex;padding-block:14px}
+  .poster{min-height:100svh;display:flex;padding-block:var(--sp-16)}
   /* Tätare luft så att hela förstasidan ryms på en iPhone-skärm */
-  .poster nav{padding-bottom:10px;margin-bottom:12px}
-  .logo{margin:8px auto}
-  .band{margin-bottom:0}
-  .photo{margin:12px 0}
-  .bill div{padding-block:8px}
-  .early{margin-top:6px;line-height:1.4}
-  .address{margin-top:10px}
+  .poster nav{padding-bottom:var(--sp-8);margin-bottom:var(--sp-16)}
+  .logo{margin:var(--sp-8) auto}
+  .photo{margin:var(--sp-20) 0}
+  .bill div{padding-block:var(--sp-8)}
+  .early{margin-top:var(--sp-8);line-height:1.4}
+  .address{margin-top:var(--sp-16)}
   .poster>.wrap{display:flex;flex-direction:column}
   .photo{flex:1 1 0;min-height:90px;position:relative}
-  .photo img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto}
+  .photo img{position:absolute;inset:0;width:100%;height:100%}
   /* Mobil: menyn vänsterställd */
   .programme .title,.act h3{text-align:left}
-  .cols{display:block}
-  .dish{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;column-gap:16px}
-  .dish p{flex-basis:100%}
+  .act{margin-top:var(--sp-56)}
 }
 </style>
 </head>
@@ -156,7 +164,43 @@ footer{border-top:1px solid var(--white);padding:24px 0;text-align:center;color:
         <h2>Meny</h2>
         <p>Innehåller (G) gluten · (L) laktos · (N) nötter</p>
       </div>
-      <div id="menu"></div>
+      <!-- Menyn står direkt i HTML: Safari på iPhone räknade inte om sektionens höjd när den lades in med JavaScript -->
+      <div id="menu">
+        <div class="act"><h3>Starters &amp; Sharers</h3><div class="cols">
+          <div class="dish"><div class="dish-head"><b>Gratinerade nachos<em>(L)</em></b><span class="price">129 kr</span></div>
+            <p>Gräddfil, tomatsalsa, pico de gallo + chiligryta med köttfärs 149 kr</p></div>
+          <div class="dish"><div class="dish-head"><b>Barsnacks<em>(L)</em></b><span class="price">139 kr</span></div>
+            <p>Ölkorv, oliver, goudaost, nachos, aïoli</p></div>
+          <div class="dish"><div class="dish-head"><b>Mixplate<em>(L) (G)</em></b><span class="price">139 kr</span></div>
+            <p>Lökringar, Mozzarella Sticks, pommes frites, aïoli</p></div>
+          <div class="dish"><div class="dish-head"><b>Hot Wings<em>(L)</em></b><span class="price">79 / 149 / 219 kr</span></div>
+            <p>Frank’s Hot Sauce, aïoli. Välj mellan 6, 12 eller 18 vingar</p></div>
+        </div></div>
+        <div class="act"><h3>The Classics</h3><div class="cols">
+          <div class="dish"><div class="dish-head"><b>Smashed Burger Classic<em>(G) (L)</em></b><span class="price">199 kr</span></div>
+            <p>Högrev &amp; bringa, cheddarost, bacon glacerat med lönnsirap. Serveras med pommes och aïoli</p></div>
+          <div class="dish"><div class="dish-head"><b>Smashed Burger Mexican<em>(G) (L)</em></b><span class="price">199 kr</span></div>
+            <p>Högrev &amp; bringa, cheddarost, pico de gallo, Frank’s Hot Sauce. Serveras med pommes och aïoli</p></div>
+          <div class="dish"><div class="dish-head"><b>Smashed Burger Vegan Classic<em>(G) (L)</em></b><span class="price">199 kr</span></div>
+            <p>Vegansk burgare. Serveras med pommes och aïoli</p></div>
+          <div class="dish"><div class="dish-head"><b>Smashed Burger Vegan Mexican<em>(G) (L)</em></b><span class="price">199 kr</span></div>
+            <p>Vegansk burgare, pico de gallo, Frank’s Hot Sauce. Serveras med pommes och aïoli</p></div>
+          <div class="dish"><div class="dish-head"><b>Baby Back Ribs<em>(L)</em></b><span class="price">299 kr</span></div>
+            <p>Ribs, pommes frites, Cole Slaw, majs</p></div>
+          <div class="dish"><div class="dish-head"><b>Caesarsallad<em>(G) (L)</em></b><span class="price">199 kr</span></div>
+            <p>Romansallad, kyckling, krutonger, tomat, bacon, Grana Padano, caesardressing</p></div>
+          <div class="dish"><div class="dish-head"><b>Pasta med kyckling<em>(G) (L)</em></b><span class="price">199 kr</span></div>
+            <p>Penne, lök, chili, kyckling, krämig vitvinssås</p></div>
+          <div class="dish"><div class="dish-head"><b>Fish &amp; Chips<em>(G) (L)</em></b><span class="price">199 kr</span></div>
+            <p>Med remouladsås</p></div>
+        </div></div>
+        <div class="act"><h3>Desserts</h3><div class="cols">
+          <div class="dish"><div class="dish-head"><b>Friterad camembert<em>(G) (L) (N)</em></b><span class="price">99 kr</span></div>
+            <p>Persilja, hjortronsylt</p></div>
+          <div class="dish"><div class="dish-head"><b>Choklad glassbakelse<em>(G) (L) (N)</em></b><span class="price">119 kr</span></div>
+            <p>Chokladglass, hasselnöt, sabayonne</p></div>
+        </div></div>
+      </div>
     </div>
   </section>
 
@@ -191,7 +235,7 @@ footer{border-top:1px solid var(--white);padding:24px 0;text-align:center;color:
       <p style="margin-top:16px">Ring eller mejla oss, så återkommer vi så snart vi kan.</p>
       <a class="big" href="tel:+4631161252">031-16 12 52</a>
       <a class="big" href="mailto:info@stagedoor.se">info@stagedoor.se</a>
-      <p style="margin-top:20px"><a href="https://www.google.com/maps/search/?api=1&amp;query=Berzeliigatan+12+G%C3%B6teborg">Berzeliigatan 12 · 412 53 Göteborg</a></p>
+      <p style="margin-top:20px"><a class="addr" href="https://www.google.com/maps/search/?api=1&amp;query=Berzeliigatan+12+G%C3%B6teborg">Berzeliigatan 12 · 412 53 Göteborg</a></p>
     </div>
   </section>
 </main>
@@ -199,14 +243,7 @@ footer{border-top:1px solid var(--white);padding:24px 0;text-align:center;color:
 
 <script src="oppet.js"></script>
 <script src="tweaks.js"></script>
-<script src="meny.js"></script>
 <script>
-document.getElementById("menu").innerHTML = STAGE_MENU.map(g => `
-  <div class="act"><h3>${g.title}</h3><div class="cols">
-  ${g.items.map(i => `<div class="dish"><b>${i.name}<em>${i.tags.split(" ").map(t => `(${t})`).join(" ")}</em></b><span class="price">${i.price}</span>
-    <p>${i.desc}${i.extra ? ` ${i.extra}` : ""}</p></div>`).join("")}
-  </div></div>`).join("");
-
 let events = [];
 const earlyDefault = early.textContent;
 function tick() {

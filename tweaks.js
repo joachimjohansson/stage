@@ -1,4 +1,4 @@
-// Tweaks-panel för Recursive: storlek, vikt och spärrning för H1, H2, H3 och Body.
+// Tweaks-panel för Recursive: storlek, vikt och spärrning för H1, H2, H3, Body och Meta.
 // Startvärdena läses från sidans :root, så panelen följer CSS:en. Bara för utveckling: ta bort <script src="tweaks.js"> inför lansering.
 (() => {
   const ROLES = [
@@ -6,8 +6,9 @@
     { id: "h2", label: "H2" },
     { id: "h3", label: "H3" },
     { id: "body", label: "Body" },
+    { id: "meta", label: "Meta" },
   ];
-  const KEY = "stagedoor-tweaks-v4";
+  const KEY = "stagedoor-tweaks-v5";
   const css0 = getComputedStyle(document.documentElement);
   const read = (k, id) => parseFloat(css0.getPropertyValue(`--${k}-${id}`)) || 0;
   const defaults = Object.fromEntries(ROLES.map(({ id }) => [id, { size: read("size", id), w: read("w", id), t: read("t", id) }]));
@@ -88,5 +89,6 @@
   });
 
   document.body.append(panel, toggle);
-  apply();
+  // Rör inte sidan förrän något har ändrats, så att CSS:ens mobil- och datorvärden gäller
+  if (Object.keys(saved).length) apply();
 })();
