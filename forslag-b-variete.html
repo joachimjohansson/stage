@@ -42,13 +42,13 @@ picture source{display:none}
 .poster nav a:hover{color:var(--gold-light);text-decoration:underline}
 .tonight{display:flex;justify-content:center;align-items:center;gap:14px}
 .tonight::before,.tonight::after{content:"";width:clamp(24px,6vw,80px);height:3px;background:var(--copper)}
-.logo{margin:var(--sp-12) auto;width:min(100%,640px)}
+.logo{margin:var(--sp-12) auto var(--sp-24);width:min(100%,640px)}
 .logo svg{display:block;width:100%;height:auto}
 .band{display:inline-block;background:var(--copper);color:var(--white);font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1;letter-spacing:var(--t-h3);padding:.22em .7em .26em}
 .address{display:flex;justify-content:center;align-items:baseline;gap:clamp(10px,3vw,28px);flex-wrap:wrap;font-family:var(--f);font-size:var(--size-body);font-weight:var(--w-h3);line-height:1.4;letter-spacing:var(--t-body);margin-top:var(--sp-32)}
 .address a,.addr{text-decoration:none}
 .address a:hover,.addr:hover{color:var(--gold-light)}
-.photo{margin:var(--sp-32) 0;border:3px solid var(--white)}
+.photo{margin:var(--sp-24) 0 var(--sp-32);border:3px solid var(--white)}
 .photo img{width:100%;height:clamp(140px,24vh,480px);object-fit:cover;filter:saturate(.9) contrast(1.05)}
 /* Öppettider i två kolumner: dagar vänster, tider höger, samma storlek */
 .bill{border-block:1px solid var(--white)}
@@ -69,7 +69,9 @@ section{padding-block:clamp(56px,8vw,104px)}
 .ornament::before,.ornament::after{content:"";flex:1;height:1px;background:var(--rule)}
 .ornament span{width:10px;height:10px;background:var(--copper);transform:rotate(45deg)}
 
-.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:start}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
+/* Om och Kontakt delar mörk botten, så bara en sektionsmarginal mellan dem */
+#scenen{padding-bottom:0}
 .about p::first-letter{float:left;font-family:var(--f);font-size:calc(var(--size-h1) * 2.8);font-weight:var(--w-h1);line-height:.8;color:var(--gold-light);margin:.06em .1em 0 0}
 .about img{border:3px solid var(--white)}
 
@@ -79,9 +81,9 @@ section{padding-block:clamp(56px,8vw,104px)}
 .meta,.programme .title p,.dish em,footer{font-size:var(--size-meta);font-weight:var(--w-meta);letter-spacing:var(--t-meta)}
 .programme .ornament::before,.programme .ornament::after{background:rgba(33,48,37,.35)}
 .act{margin-top:var(--sp-72)}
-.act h3{text-align:center;font-family:var(--f);font-size:var(--size-h2);font-weight:var(--w-h2);line-height:1;letter-spacing:var(--t-h2);color:var(--copper);padding-bottom:12px;border-bottom:1px solid var(--green-deep)}
+.act h3{text-align:center;font-family:var(--f);font-size:var(--size-h2);font-weight:var(--w-h2);line-height:1;letter-spacing:var(--t-h2);color:var(--copper);padding-bottom:15px;border-bottom:1px solid var(--green-deep)}
 /* Enkla block och en flexrad utan baslinje/radbrytning: Safari på iOS 27 räknade fel höjd på rutnät och baslinjejusterade flexrader */
-.dish{display:block;padding:var(--sp-12) 0;border-bottom:1px solid rgba(33,48,37,.2)}
+.dish{display:block;padding:15px 0;border-bottom:1px solid rgba(33,48,37,.2)}
 .dish b{font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1.2;letter-spacing:var(--t-h3)}
 .dish .price{font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1.2;letter-spacing:var(--t-h3);color:var(--copper);white-space:nowrap;font-variant-numeric:tabular-nums}
 .dish-head{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--sp-16)}
@@ -120,8 +122,8 @@ footer{border-top:1px solid var(--white);padding:24px 0;text-align:center;color:
   .poster{min-height:100svh;display:flex;padding-block:var(--sp-16)}
   /* Tätare luft så att hela förstasidan ryms på en iPhone-skärm */
   .poster nav{padding-bottom:var(--sp-8);margin-bottom:var(--sp-16)}
-  .logo{margin:var(--sp-8) auto}
-  .photo{margin:var(--sp-20) 0}
+  .logo{margin:var(--sp-8) auto var(--sp-16)}
+  .photo{margin:var(--sp-16) 0 var(--sp-20)}
   .bill div{padding-block:var(--sp-8)}
   .early{margin-top:var(--sp-8);line-height:1.4}
   .address{margin-top:var(--sp-16)}
