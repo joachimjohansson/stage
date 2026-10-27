@@ -10,15 +10,16 @@
 <style>
 @font-face{font-family:'VictorianStd';src:url('https://static.wfonts.com/data/2016/07/03/victorian-std/VictorianStd.woff') format('woff');font-display:swap}
 :root{
-  --green:#313027; --green-deep:#170F32; --copper:#473E63; --copper-deep:#D9CB42;
-  --white:#E8E7E0;
+  /* Pergament, mörkgrönt, varmrött och rödguld */
+  --green:#2E4033; --green-deep:#213025; --copper:#8B4538; --copper-light:#A25446; --copper-deep:#C88D44; --gold-light:#DF9F53;
+  --white:#FAF7F2;
   /* Recursive: fyra roller. Slant och Casual gäller hela sidan */
   --f:"Recursive",system-ui,sans-serif; --casl:0.3; --slnt:0;
-  --size-h1:36px; --w-h1:550; --t-h1:0em;
-  --size-h2:28px; --w-h2:650; --t-h2:0em;
-  --size-h3:22px; --w-h3:550; --t-h3:0em;
-  --size-body:16px; --w-body:450; --t-body:0em;
-  --mint:rgba(232,231,224,.8); --rule:rgba(232,231,224,.55);
+  --size-h1:42px; --w-h1:760; --t-h1:-0.025em;
+  --size-h2:27px; --w-h2:640; --t-h2:0em;
+  --size-h3:22px; --w-h3:550; --t-h3:-0.01em;
+  --size-body:16px; --w-body:420; --t-body:0em;
+  --mint:#EFE8DE; --rule:rgba(250,247,242,.55);
 }
 *{box-sizing:border-box;margin:0}
 html{scrollbar-color:var(--copper) var(--green-deep)}
@@ -35,8 +36,8 @@ picture source{display:none}
 .poster{padding:clamp(20px,4vw,56px) 0;text-align:center}
 .poster nav{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 24px;border-bottom:1px solid var(--rule);padding-bottom:14px;margin-bottom:clamp(20px,3vw,36px)}
 .poster nav a{text-decoration:none}
-.poster nav a:hover{color:var(--mint);text-decoration:underline}
-.tonight{display:inline-flex;align-items:center;gap:14px}
+.poster nav a:hover{color:var(--gold-light);text-decoration:underline}
+.tonight{display:flex;justify-content:center;align-items:center;gap:14px}
 .tonight::before,.tonight::after{content:"";width:clamp(24px,6vw,80px);height:3px;background:var(--copper)}
 .logo{margin:.35em auto .5em;width:min(100%,820px)}
 .logo svg{display:block;width:100%;height:auto}
@@ -48,34 +49,32 @@ picture source{display:none}
 .bill{border-block:1px solid var(--white)}
 .bill div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px max(8px,calc((100% - 480px) / 2))}
 .bill div+div{border-top:1px solid var(--rule)}
-.bill small,.bill b{font-family:var(--f);font-size:var(--size-h2);font-weight:var(--w-h2);line-height:1.1;letter-spacing:var(--t-h2);font-variant-numeric:tabular-nums}
-.bill small{text-align:left}
-.bill b{text-align:right;white-space:nowrap}
+.bill small,.bill b{font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1.1;letter-spacing:var(--t-h3);font-variant-numeric:tabular-nums}
+.bill small{text-align:left;font-weight:450}
+.bill b{text-align:right;white-space:nowrap;color:var(--gold-light)}
 .early{margin-top:10px;color:var(--mint)}
-.tickets{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:min(100%,560px);margin:clamp(20px,3vw,32px) auto 0}
-.ticket{display:block;text-decoration:none;background:var(--white);color:var(--green-deep);padding:16px 10px;font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1;letter-spacing:var(--t-h3);white-space:nowrap;transition:background .2s,color .2s}
-.ticket:hover{background:var(--copper);color:var(--white)}
 
 /* Sektioner */
 section{padding-block:clamp(56px,8vw,104px)}
 .title{text-align:center;margin-bottom:clamp(28px,4vw,48px)}
 .title h2{font-family:var(--f);font-size:var(--size-h1);font-weight:var(--w-h1);line-height:1;letter-spacing:var(--t-h1)}
+.programme .title h2{color:var(--green)}
 .title p{margin-top:12px;color:var(--mint)}
 .ornament{display:flex;align-items:center;gap:14px;justify-content:center;margin:0 auto 18px;width:min(320px,80%)}
 .ornament::before,.ornament::after{content:"";flex:1;height:1px;background:var(--rule)}
 .ornament span{width:10px;height:10px;background:var(--copper);transform:rotate(45deg)}
 
 .about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:start}
-.about p::first-letter{float:left;font-family:var(--f);font-size:calc(var(--size-h1) * 2.8);font-weight:var(--w-h1);line-height:.8;color:var(--copper-deep);margin:.06em .1em 0 0}
+.about p::first-letter{float:left;font-family:var(--f);font-size:calc(var(--size-h1) * 2.8);font-weight:var(--w-h1);line-height:.8;color:var(--gold-light);margin:.06em .1em 0 0}
 .about img{border:3px solid var(--white)}
 
 /* Programmet = menyn, på ljus affischpapp */
 .programme{background:var(--white);color:var(--green-deep);display:flow-root;position:relative}
 .programme .title p{color:var(--copper)}
-.programme .ornament::before,.programme .ornament::after{background:rgba(23,15,50,.35)}
+.programme .ornament::before,.programme .ornament::after{background:rgba(33,48,37,.35)}
 .act{margin-top:clamp(28px,4vw,44px)}
 .act h3{text-align:center;font-family:var(--f);font-size:var(--size-h2);font-weight:var(--w-h2);line-height:1;letter-spacing:var(--t-h2);color:var(--copper);padding-bottom:12px;border-bottom:1px solid var(--green-deep)}
-.dish{display:grid;grid-template-columns:1fr auto;gap:2px 24px;padding:16px 0;border-bottom:1px solid rgba(23,15,50,.2)}
+.dish{display:grid;grid-template-columns:1fr auto;gap:2px 24px;padding:16px 0;border-bottom:1px solid rgba(33,48,37,.2)}
 .dish b{font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1.15;letter-spacing:var(--t-h3)}
 .dish .price{font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1.15;letter-spacing:var(--t-h3);color:var(--copper);white-space:nowrap;font-variant-numeric:tabular-nums}
 .dish p{grid-column:1/-1;max-width:64ch;color:var(--green)}
@@ -98,14 +97,14 @@ section{padding-block:clamp(56px,8vw,104px)}
 /* Biljettkassan */
 .boxoffice{text-align:center}
 .boxoffice .big{display:block;font-family:var(--f);font-size:var(--size-h2);font-weight:var(--w-h2);line-height:1.2;letter-spacing:var(--t-h2);text-decoration:none;margin:.15em 0}
-.boxoffice .big:hover{color:var(--mint)}
+.boxoffice .big:hover{color:var(--gold-light)}
 .boxoffice p{max-width:52ch;margin-inline:auto}
 footer{border-top:1px solid var(--white);padding:24px 0;text-align:center;color:var(--mint)}
 
 @media (max-width:760px){
   .about,.taps{grid-template-columns:1fr}
   /* Öppettiderna krymper med skärmen så att raden ryms */
-  .bill small,.bill b{font-size:min(var(--size-h2), 5.6vw)}
+  .bill small,.bill b{font-size:min(var(--size-h3), 5.6vw)}
   .gallery{grid-template-columns:1fr 1fr}
   .poster{min-height:100svh;display:flex;padding-block:14px}
   /* Tätare luft så att hela förstasidan ryms på en iPhone-skärm */
@@ -116,8 +115,6 @@ footer{border-top:1px solid var(--white);padding:24px 0;text-align:center;color:
   .bill div{padding-block:8px}
   .early{margin-top:6px;line-height:1.4}
   .address{margin-top:10px}
-  .tickets{margin-top:12px}
-  .ticket{padding-block:14px}
   .poster>.wrap{display:flex;flex-direction:column}
   .photo{flex:1 1 0;min-height:90px;position:relative}
   .photo img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto}
@@ -137,22 +134,18 @@ footer{border-top:1px solid var(--white);padding:24px 0;text-align:center;color:
         <a href="#programmet">Meny</a><a href="#scenen">Om</a><a href="#kassan">Kontakt</a>
       </nav>
       <p class="tonight" id="tonight" role="status">Öppet i kväll</p>
-      <h1 class="logo"><svg viewBox="0 0 430 94" role="img" aria-label="Stage Door"><!-- Ramen ritad efter originalets mått: 3 px linje, 2 px in från kanten, hörnen urgröpta med radie 10 från hörnpunkten. Orden står på originalets x-lägen 51 och 229. --><path d="M9.8 2H420.2A10 10 0 0 0 428 9.8V84.2A10 10 0 0 0 420.2 92H9.8A10 10 0 0 0 2 84.2V9.8A10 10 0 0 0 9.8 2Z" fill="none" stroke="#E8E7E0" stroke-width="3"/><text y="66" fill="#E8E7E0" font-family="VictorianStd, serif" font-weight="400" style="font-synthesis:none" font-size="57.35"><tspan x="51">STAGE</tspan><tspan x="229">DOOR</tspan></text></svg></h1>
+      <h1 class="logo"><svg viewBox="0 0 430 94" role="img" aria-label="Stage Door"><!-- Ramen ritad efter originalets mått: 3 px linje, 2 px in från kanten, hörnen urgröpta med radie 10 från hörnpunkten. Orden står på originalets x-lägen 51 och 229. --><path d="M9.8 2H420.2A10 10 0 0 0 428 9.8V84.2A10 10 0 0 0 420.2 92H9.8A10 10 0 0 0 2 84.2V9.8A10 10 0 0 0 9.8 2Z" fill="none" stroke="#FAF7F2" stroke-width="3"/><text y="66" fill="#FAF7F2" font-family="VictorianStd, serif" font-weight="400" style="font-synthesis:none" font-size="57.35"><tspan x="51">STAGE</tspan><tspan x="229">DOOR</tspan></text></svg></h1>
       <p class="band">Bar & Restaurang</p>
       <div class="photo">
         <picture><source srcset="bilder/untitled-hdr2.avif" type="image/avif"><img src="original/bilder/untitled-hdr2.jpg" alt="Matsalen på Stage Door med väggar fulla av inramade artistporträtt" width="1200" height="476"></picture>
       </div>
       <div class="bill">
-        <div data-days="0 1 2 3 4"><small>Söndag till torsdag</small><b>16 - 01</b></div>
-        <div data-days="5"><small>Fredag</small><b>15 - 02</b></div>
-        <div data-days="6"><small>Lördag</small><b>14 - 02</b></div>
+        <div data-days="0 1 2 3 4"><small>Söndag till torsdag</small><b>16-01</b></div>
+        <div data-days="5"><small>Fredag</small><b>15-02</b></div>
+        <div data-days="6"><small>Lördag</small><b>14-02</b></div>
       </div>
       <p class="early" id="early">Vi öppnar dessutom tidigare under större evenemang.</p>
-      <p class="address">Berzeliigatan 12, Göteborg</p>
-      <div class="tickets">
-        <a class="ticket" href="https://www.google.com/maps/search/?api=1&query=Berzeliigatan+12+G%C3%B6teborg">Hitta hit</a>
-        <a class="ticket" href="tel:+4631161252">031-16 12 52</a>
-      </div>
+      <p class="address"><a href="https://www.google.com/maps/search/?api=1&amp;query=Berzeliigatan+12+G%C3%B6teborg">Berzeliigatan 12, Göteborg</a></p>
     </div>
   </div>
 
@@ -194,11 +187,11 @@ footer{border-top:1px solid var(--white);padding:24px 0;text-align:center;color:
   <section id="kassan" class="boxoffice">
     <div class="wrap">
       <div class="ornament"><span></span></div>
-      <h2 style="font-family:var(--f);font-size:var(--size-h1);font-weight:var(--w-h1);line-height:1;letter-spacing:var(--t-h1)">Boka bord</h2>
+      <h2 style="font-family:var(--f);font-size:var(--size-h1);font-weight:var(--w-h1);line-height:1;letter-spacing:var(--t-h1);color:var(--gold-light)">Boka bord</h2>
       <p style="margin-top:16px">Ring eller mejla oss, så återkommer vi så snart vi kan.</p>
       <a class="big" href="tel:+4631161252">031-16 12 52</a>
       <a class="big" href="mailto:info@stagedoor.se">info@stagedoor.se</a>
-      <p style="margin-top:20px">Berzeliigatan 12 · 412 53 Göteborg</p>
+      <p style="margin-top:20px"><a href="https://www.google.com/maps/search/?api=1&amp;query=Berzeliigatan+12+G%C3%B6teborg">Berzeliigatan 12 · 412 53 Göteborg</a></p>
     </div>
   </section>
 </main>
