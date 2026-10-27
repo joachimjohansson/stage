@@ -1,15 +1,16 @@
-// Tweaks-panel för Alan Sans: vikt och spärrning per typografisk roll (storlekar står i px i CSS:en).
+// Tweaks-panel för Recursive: storlek, vikt och spärrning för H1, H2, H3 och Body.
 // Startvärdena läses från sidans :root, så panelen följer CSS:en. Bara för utveckling: ta bort <script src="tweaks.js"> inför lansering.
 (() => {
   const ROLES = [
-    { id: "display", label: "Rubriker" },
-    { id: "accent", label: "Mellanrubriker" },
-    { id: "body", label: "Brödtext" },
+    { id: "h1", label: "H1" },
+    { id: "h2", label: "H2" },
+    { id: "h3", label: "H3" },
+    { id: "body", label: "Body" },
   ];
-  const KEY = "stagedoor-tweaks-v3";
+  const KEY = "stagedoor-tweaks-v4";
   const css0 = getComputedStyle(document.documentElement);
   const read = (k, id) => parseFloat(css0.getPropertyValue(`--${k}-${id}`)) || 0;
-  const defaults = Object.fromEntries(ROLES.map(({ id }) => [id, { w: read("w", id), t: read("t", id) }]));
+  const defaults = Object.fromEntries(ROLES.map(({ id }) => [id, { size: read("size", id), w: read("w", id), t: read("t", id) }]));
   let saved;
   try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch { saved = {}; }
   const state = Object.fromEntries(ROLES.map(({ id }) => [id, { ...defaults[id], ...saved[id] }]));
@@ -18,14 +19,15 @@
   function apply() {
     ROLES.forEach(({ id }) => {
       const v = state[id];
+      root.setProperty(`--size-${id}`, `${v.size}px`);
       root.setProperty(`--w-${id}`, v.w);
-      if (id !== "body") root.setProperty(`--t-${id}`, `${v.t}em`);
+      root.setProperty(`--t-${id}`, `${v.t}em`);
     });
     try { localStorage.setItem(KEY, JSON.stringify(state)); } catch {}
   }
 
   const css = `
-  .tw-toggle,.tw-panel{font:500 13px/1.4 system-ui,sans-serif;color:#111;letter-spacing:0}
+  .tw-toggle,.tw-panel{font:500 13px/1.4 system-ui,sans-serif;color:#111;letter-spacing:0;font-variation-settings:normal}
   .tw-toggle{position:fixed;right:16px;bottom:16px;z-index:99;background:#fff;border:1px solid #111;border-radius:999px;padding:10px 16px;cursor:pointer;box-shadow:0 6px 20px -8px rgba(0,0,0,.5)}
   .tw-panel{position:fixed;right:16px;bottom:64px;z-index:99;width:min(320px,calc(100vw - 32px));max-height:calc(100vh - 96px);overflow:auto;background:#fff;border:1px solid #111;border-radius:10px;padding:14px 16px;box-shadow:0 12px 32px -12px rgba(0,0,0,.6)}
   .tw-panel[hidden]{display:none}
@@ -40,7 +42,7 @@
   .tw-panel :focus-visible,.tw-toggle:focus-visible{outline:2px solid #b84b24;outline-offset:2px}`;
   document.head.insertAdjacentHTML("beforeend", `<style>${css}</style>`);
 
-  const FMT = { w: v => v, t: v => `${(+v).toFixed(3)}` };
+  const FMT = { size: v => `${v}px`, w: v => v, t: v => `${(+v).toFixed(3)}` };
   const slider = (role, key, label, min, max, step) =>
     `<label>${label}<input type="range" data-role="${role}" data-key="${key}" min="${min}" max="${max}" step="${step}" value="${state[role][key]}"><output>${FMT[key](state[role][key])}</output></label>`;
 
@@ -51,8 +53,9 @@
   panel.setAttribute("aria-label", "Typografi-tweaks");
   panel.innerHTML = ROLES.map(({ id, label }) => `
     <fieldset><legend>${label}</legend>
-      ${slider(id, "w", "Vikt", 300, 900, 10)}
-      ${id === "body" ? "" : slider(id, "t", "Spärrning", -.08, .12, .005)}
+      ${slider(id, "size", "Storlek", 10, 72, 1)}
+      ${slider(id, "w", "Vikt", 300, 1000, 10)}
+      ${slider(id, "t", "Spärrning", -.08, .12, .005)}
     </fieldset>`).join("") + `
     <div class="tw-row"><button type="button" data-act="copy">Kopiera CSS</button><button type="button" data-act="reset">Återställ</button></div>`;
 
@@ -76,7 +79,7 @@
     if (act === "copy") {
       const text = ":root{\n" + ROLES.map(({ id }) => {
         const v = state[id];
-        return `  --w-${id}:${v.w};` + (id === "body" ? "" : ` --t-${id}:${v.t}em;`);
+        return `  --size-${id}:${v.size}px; --w-${id}:${v.w}; --t-${id}:${v.t}em;`;
       }).join("\n") + "\n}";
       try { await navigator.clipboard.writeText(text); e.target.textContent = "Kopierat"; }
       catch { prompt("Kopiera:", text); }
