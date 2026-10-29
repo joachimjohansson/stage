@@ -24,6 +24,7 @@
     `om: topp ${top(S)} höjd ${h(S)}`,
     `section display ${cs(P).display} position ${cs(P).position} contain ${cs(P).contain} cv ${cs(P).contentVisibility}`,
     `poster höjd ${h(document.querySelector(".poster"))}`,
+    `Meny-rubrik: css ${cs(P.querySelector(".title h2")).fontSize}, ritad höjd ${h(P.querySelector(".title h2"))} | text-size-adjust ${cs(document.documentElement).webkitTextSizeAdjust}`,
   ];
   const box = document.createElement("div");
   box.id = "dbg";

@@ -46,7 +46,8 @@
   --mint:#EFE8DE; --rule:rgba(250,247,242,.55);
 }
 *{box-sizing:border-box;margin:0}
-html{scrollbar-color:var(--copper) var(--green-deep)}
+/* Stäng av Safaris automatiska textförstoring på iPhone: texten ritades ca 25 % större än CSS:en och menyn hamnade över Om-delen, troligen för att höjderna inte följde med */
+html{scrollbar-color:var(--copper) var(--green-deep);-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{background:var(--green);color:var(--white);font-family:var(--f);font-size:var(--size-body);font-weight:calc(var(--w-body) + 30);line-height:1.6;letter-spacing:calc(var(--t-body) + 0.005em);font-variation-settings:"CASL" var(--casl),"slnt" var(--slnt)}
 ::selection{background:var(--copper);color:var(--white)}
 a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:2px}
