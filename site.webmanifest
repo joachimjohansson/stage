@@ -1,0 +1,12 @@
+{
+  "name": "Stage Door",
+  "short_name": "Stage Door",
+  "start_url": "./",
+  "display": "browser",
+  "background_color": "#15251A",
+  "theme_color": "#15251A",
+  "icons": [
+    { "src": "ikoner/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "ikoner/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
