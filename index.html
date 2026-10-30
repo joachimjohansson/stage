@@ -26,7 +26,6 @@
 <link rel="preload" href="https://static.wfonts.com/data/2016/07/03/victorian-std/VictorianStd.woff" as="font" type="font/woff" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Hela axelintervallen: med färre axlar hamnade menyn över nästa sektion i Safari på iOS 27 -->
 <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL@-15..0,300..1000,0..1&display=swap" rel="stylesheet">
 <style>
 @font-face{font-family:'VictorianStd';src:url('https://static.wfonts.com/data/2016/07/03/victorian-std/VictorianStd.woff') format('woff');font-display:swap}
@@ -46,7 +45,6 @@
   --mint:#EFE8DE; --rule:rgba(250,247,242,.55);
 }
 *{box-sizing:border-box;margin:0}
-/* Stäng av Safaris automatiska textförstoring på iPhone: texten ritades ca 25 % större än CSS:en och menyn hamnade över Om-delen, troligen för att höjderna inte följde med */
 html{scrollbar-color:var(--copper) var(--green-deep);-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{background:var(--green);color:var(--white);font-family:var(--f);font-size:var(--size-body);font-weight:calc(var(--w-body) + 30);line-height:1.6;letter-spacing:calc(var(--t-body) + 0.005em);font-variation-settings:"CASL" var(--casl),"slnt" var(--slnt)}
 ::selection{background:var(--copper);color:var(--white)}
@@ -282,6 +280,29 @@ function tick() {
 }
 tick(); setInterval(tick, 30000);
 // Evenemang på Scandinavium hämtas dagligen av scripts/hamta-evenemang.mjs; utan filen gäller ordinarie tider
+// Safari på iPhone räknar ibland menyns höjd för lågt vid laddning, så rätterna ritas över Om-delen. Att bygga om sektionen ger rätt höjd.
+// shortcut: orsaken är okänd, ta bort när Safari är rättat eller orsaken hittad
+const menyLogg = [];
+function raknaOmMeny(orsak) {
+  const meny = document.querySelector("#programmet"), y = scrollY, fore = meny.offsetHeight;
+  meny.style.display = "none";
+  meny.offsetHeight;
+  meny.style.display = "";
+  scrollTo(0, y);
+  menyLogg.push(`${orsak}: ${fore} till ${meny.offsetHeight}`);
+}
+addEventListener("load", () => raknaOmMeny("load"));
+addEventListener("pageshow", () => raknaOmMeny("pageshow"));
+document.fonts.ready.then(() => raknaOmMeny("typsnitt"));
+// Tillfällig mätning: fem tryck på sidfoten visar värdena
+let tryck = 0;
+document.querySelector("footer").addEventListener("click", () => {
+  if (++tryck < 5) return;
+  tryck = 0;
+  const topp = el => Math.round(el.getBoundingClientRect().top + scrollY);
+  const meny = document.querySelector("#programmet"), sista = [...document.querySelectorAll(".dish")].pop();
+  alert(`Bredd ${innerWidth}, meny ${topp(meny)}+${meny.offsetHeight}, sista rätten slutar ${topp(sista) + sista.offsetHeight}, Om börjar ${topp(document.querySelector("#scenen"))}, ${menyLogg.join(", ")}`);
+});
 fetch("evenemang.json").then(r => r.ok ? r.json() : { events: [] }).then(d => { events = d.events || []; tick(); }).catch(() => {});
 </script>
 </body>
