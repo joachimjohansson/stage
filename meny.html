@@ -26,7 +26,7 @@
         <h1>Meny</h1>
         <p>Innehåller (G) gluten · (L) laktos · (N) nötter</p>
       </div>
-      <div id="menu">
+      <div id="matsedel">
         <div class="act"><h2>Starters &amp; Sharers</h2><div class="cols">
           <div class="dish"><div class="dish-head"><b>Gratinerade nachos<em>(L)</em></b><span class="price">129 kr</span></div>
             <p>Gräddfil, tomatsalsa, pico de gallo + chiligryta med köttfärs 149 kr</p></div>
@@ -74,7 +74,7 @@ addEventListener("load", () => setTimeout(() => {
   ruta.style.cssText = "position:sticky;top:0;z-index:9;margin:0;padding:6px 16px;background:#fff;color:#000;font:12px/1.4 monospace;white-space:pre-wrap";
   ruta.textContent = `skärm ${screen.width}, inner ${innerWidth}, client ${d.clientWidth}, scroll ${d.scrollWidth}
 visual ${Math.round(v.width)} skala ${v.scale.toFixed(2)}, dpr ${devicePixelRatio}
-body ${b("body")}, wrap ${b("main .wrap")}, rätt ${b(".dish-head")}, h1 ${getComputedStyle(document.querySelector("h1")).fontSize}, utanför ${utanfor}`;
+body ${b("body")}, wrap ${b("main .wrap")}, matsedel ${getComputedStyle(document.querySelector("#matsedel")).position}, rätt ${b(".dish-head")}, h1 ${getComputedStyle(document.querySelector("h1")).fontSize}, utanför ${utanfor}`;
   document.querySelector("main").prepend(ruta);
 }, 1000));
 </script>
