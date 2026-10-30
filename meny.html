@@ -15,7 +15,7 @@
 <body class="ljus">
 <header class="topp">
   <div class="wrap">
-    <nav aria-label="Huvudmeny"><a href="./">Start</a><a href="meny.html" aria-current="page">Meny</a><a href="./#scenen">Om</a><a href="./#kassan">Kontakt</a></nav>
+    <nav aria-label="Huvudmeny"><a href="./">Start</a><a href="./#scenen">Om</a><a href="./#kassan">Kontakt</a></nav>
   </div>
 </header>
 <main>
@@ -65,5 +65,18 @@
     </div>
   </section>
 </main>
+<!-- Tillfällig mätning av bredden på iPhone, tas bort när marginalen är löst -->
+<script>
+addEventListener("load", () => setTimeout(() => {
+  const b = s => Math.round(document.querySelector(s).getBoundingClientRect().width), v = visualViewport, d = document.documentElement;
+  const utanfor = [...document.querySelectorAll("main *")].filter(e => e.getBoundingClientRect().right > d.clientWidth + .5).length;
+  const ruta = document.createElement("pre");
+  ruta.style.cssText = "position:sticky;top:0;z-index:9;margin:0;padding:6px 16px;background:#fff;color:#000;font:12px/1.4 monospace;white-space:pre-wrap";
+  ruta.textContent = `skärm ${screen.width}, inner ${innerWidth}, client ${d.clientWidth}, scroll ${d.scrollWidth}
+visual ${Math.round(v.width)} skala ${v.scale.toFixed(2)}, dpr ${devicePixelRatio}
+body ${b("body")}, wrap ${b("main .wrap")}, rätt ${b(".dish-head")}, h1 ${getComputedStyle(document.querySelector("h1")).fontSize}, utanför ${utanfor}`;
+  document.querySelector("main").prepend(ruta);
+}, 1000));
+</script>
 </body>
 </html>
