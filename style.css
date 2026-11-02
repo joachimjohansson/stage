@@ -1,4 +1,3 @@
-@font-face{font-family:'VictorianStd';src:url('https://static.wfonts.com/data/2016/07/03/victorian-std/VictorianStd.woff') format('woff');font-display:swap}
 :root{
   /* Pergament, mörkgrönt, varmrött och rödguld */
   --green:#15251A; --green-deep:#0E1A12; --copper:#6D1809; --copper-deep:#D08925; --gold-light:#E89B36;
