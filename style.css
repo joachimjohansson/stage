@@ -76,7 +76,8 @@ section{padding-block:clamp(56px,8vw,104px)}
 .about img{border:3px solid var(--white)}
 
 /* Programmet = menyn, på ljus affischpapp */
-.programme{background:var(--white);color:var(--green-deep);font-weight:var(--w-body);line-height:1.55;letter-spacing:var(--t-body)}
+/* Menyn har egna typroller: brödtext 15, rätter och priser 20/630, kategorier 28/730 */
+.programme{--size-body:15px;--size-h3:20px;--w-h3:630;--size-h2:28px;--w-h2:730;font-size:var(--size-body);background:var(--white);color:var(--green-deep);font-weight:var(--w-body);line-height:1.55;letter-spacing:var(--t-body)}
 .programme .title p{color:var(--copper)}
 .meta,.programme .title p,.dish em,footer{font-size:var(--size-meta);font-weight:var(--w-meta);letter-spacing:var(--t-meta)}
 .programme .ornament::before,.programme .ornament::after{background:rgba(14,26,18,.35)}
