@@ -6,7 +6,7 @@
 <title>Stage Door – Bar & restaurang på Berzeliigatan 12, Göteborg</title>
 <meta name="description" content="Bar och restaurang på Berzeliigatan 12 i Göteborg. Vällagad mat från en prisvärd meny, utvalda viner och en stilla öl i baren. Öppet alla dagar, tidigare vid större evenemang.">
 <link rel="canonical" href="https://joachimjohansson.github.io/stage/">
-<meta name="theme-color" content="#15251A">
+<meta name="theme-color" content="#061704">
 <link rel="icon" type="image/png" sizes="32x32" href="ikoner/favicon-32.png">
 <link rel="icon" type="image/png" sizes="48x48" href="ikoner/favicon-48.png">
 <link rel="apple-touch-icon" href="ikoner/apple-touch-icon.png">
@@ -44,7 +44,7 @@
       <h1 class="logo"><svg viewBox="0 0 430 94" role="img" aria-label="Stage Door"><!-- Ramen ritad efter originalets mått: 3 px linje, 2 px in från kanten, hörnen urgröpta med radie 10 från hörnpunkten. Orden står på originalets x-lägen 51 och 229. --><path d="M9.8 2H420.2A10 10 0 0 0 428 9.8V84.2A10 10 0 0 0 420.2 92H9.8A10 10 0 0 0 2 84.2V9.8A10 10 0 0 0 9.8 2Z" fill="none" stroke="#FAF7F2" stroke-width="3"/><text y="66" fill="#FAF7F2" font-family="VictorianStd, serif" font-weight="400" style="font-synthesis:none" font-size="57.35"><tspan x="51">STAGE</tspan><tspan x="229">DOOR</tspan></text></svg></h1>
       <p class="band">Bar & Restaurang</p>
       <div class="photo">
-        <picture><source srcset="bilder/dsc-7083-800.avif 800w, bilder/dsc-7083.avif 1200w" sizes="(min-width:1152px) 1114px, calc(100vw - 38px)" type="image/avif"><img src="original/bilder/dsc-7083.jpg" alt="Kopparbardisken och väggen av flaskor" width="1200" height="800" fetchpriority="high"></picture>
+        <video muted loop playsinline preload="auto" poster="bilder/hallning-loop.jpg" src="bilder/hallning-loop.mp4" aria-label="Öl som hälls upp i ett glas"></video>
       </div>
       <div class="tider">
       <div class="bill">
@@ -52,7 +52,7 @@
         <div data-days="5"><small>Fredag</small><b>15-02</b></div>
         <div data-days="6"><small>Lördag</small><b>14-02</b></div>
       </div>
-      <p class="early" id="early">Vi öppnar dessutom tidigare under större evenemang.</p>
+      <p class="early" id="early">Vi öppnar dessutom tidigare vid större evenemang.</p>
       </div>
       <p class="address"><a href="https://www.google.com/maps/search/?api=1&amp;query=Berzeliigatan+12+G%C3%B6teborg">Berzeliigatan 12, Göteborg</a></p>
     </div>
@@ -139,7 +139,7 @@
     </div>
   </section>
 </main>
-<footer><div class="wrap">Stage Door · Bar & Restaurang · Berzeliigatan 12, Göteborg</div></footer>
+<footer><div class="wrap">Stage Door · Bar & Restaurang · Berzeliigatan 12, Göteborg<br><small>Film: <a href="https://www.vecteezy.com/video/47658512-pouring-beer-with-foamy-head-in-glass">Pisut Tardging, Vecteezy</a></small></div></footer>
 
 <script src="oppet.js"></script>
 <script>
@@ -158,6 +158,9 @@ function tick() {
 }
 tick(); setInterval(tick, 30000);
 // Evenemang på Scandinavium hämtas dagligen av scripts/hamta-evenemang.mjs; utan filen gäller ordinarie tider
+// Filmen loopar; med minskad rörelse står den still på första bildrutan
+const hallning = document.querySelector(".photo video");
+if (!matchMedia("(prefers-reduced-motion: reduce)").matches) hallning.play().catch(() => {});
 fetch("evenemang.json").then(r => r.ok ? r.json() : { events: [] }).then(d => { events = d.events || []; tick(); }).catch(() => {});
 </script>
 </body>

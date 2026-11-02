@@ -20,6 +20,15 @@
         ],
         "createdAt": "2026-10-25T14:44:14.989Z",
         "reason": "agent verified: h1/h2 use clamp() display sizes (2-9.5rem); detector reads them as body size"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-02T14:32:02.999Z",
+        "reason": "Agent: detektorn jämför texten med gradientens ljusaste stopp (#1A5212), som ligger bakom filmen. Mätning av renderade pixlar under texten i 402x868 och 1440x900 ger lägst 5,67:1 (grön evenemangstext) och 6,2:1 (guldtider)"
       }
     ]
   }
