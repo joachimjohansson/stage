@@ -27,12 +27,11 @@ picture source{display:none}
 
 /* Fyrlagerskugga i varmt guld: ett tunt skarpt lager för kanten och tre allt mjukare för ett sken, så att delarna avtecknar sig mot den mörka botten */
 :root{--skugga:0 0 1px rgba(232,155,54,.28),0 2px 6px rgba(232,155,54,.11),0 6px 18px rgba(232,155,54,.07),0 14px 40px rgba(232,155,54,.05)}
-.logo svg{filter:drop-shadow(0 0 1px rgba(232,155,54,.28)) drop-shadow(0 2px 5px rgba(232,155,54,.1)) drop-shadow(0 5px 14px rgba(232,155,54,.06)) drop-shadow(0 12px 30px rgba(232,155,54,.05))}
 .band,.photo{box-shadow:var(--skugga)}
 .photo video{display:block;width:100%;height:clamp(140px,24vh,480px);object-fit:cover;object-position:45% 50%}
 /* Affischen */
-/* Flaskgrönt: nästan svart grönt med ett ljusare sken centrerat bakom filmen, mörkare där den lilla texten står */
-.poster{background:radial-gradient(90% 50% at 50% 49%,#1A5212,#0F320B 45%,#071A04 80%,var(--flaska))}
+/* Flaskgrönt: nästan svart grönt med ett ljusare sken mellan loggan och filmen, mörkare där den lilla texten står */
+.poster{background:radial-gradient(90% 50% at 50% 34%,#1A5212,#0F320B 45%,#071A04 80%,var(--flaska))}
 #kassan{background:radial-gradient(80% 90% at 50% 100%,#10350A,var(--flaska) 75%)}
 .poster{padding:var(--sp-24) 0 var(--sp-32);text-align:center}
 nav{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 24px;border-bottom:1px solid var(--rule);padding-bottom:var(--sp-12);margin-bottom:var(--sp-32)}
