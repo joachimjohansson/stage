@@ -48,6 +48,8 @@ nav a:hover{color:var(--gold-light);text-decoration:underline}
 .photo{margin:var(--sp-24) 0 var(--sp-32);border:3px solid var(--white)}
 .photo img{width:100%;height:clamp(140px,24vh,480px);object-fit:cover;filter:saturate(.9) contrast(1.05)}
 /* Öppettider i två kolumner: dagar vänster, tider höger, samma storlek */
+/* Öppettiderna lika breda som loggan */
+.tider{width:min(100%,640px);margin-inline:auto}
 .bill{border-block:1px solid var(--sage)}
 .bill div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px max(8px,calc((100% - 480px) / 2))}
 .bill div+div{border-top:1px solid var(--sage)}
