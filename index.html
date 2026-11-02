@@ -34,6 +34,7 @@
 <body>
 <main>
   <div class="poster">
+    <div class="bubblor" aria-hidden="true"></div>
     <div class="wrap">
       <nav aria-label="Huvudmeny">
         <a href="#meny">Meny</a><a href="#scenen">Om</a><a href="#kassan">Kontakt</a>
@@ -176,6 +177,13 @@ tick(); setInterval(tick, 30000);
 // Filmen loopar; med minskad rörelse står den still på första bildrutan
 const hallning = document.querySelector(".photo video");
 if (!matchMedia("(prefers-reduced-motion: reduce)").matches) hallning.play().catch(() => {});
+// Bubblor som stiger i förstasidans bakgrund, med slumpad storlek, läge och fart
+const bubblor = document.querySelector(".bubblor");
+for (let i = 0; i < 24; i++) {
+  const b = document.createElement("span"), d = 4 + Math.random() * 14;
+  b.style.cssText = `width:${d}px;height:${d}px;left:${Math.random() * 100}%;--y:${Math.random() * 95}%;animation-duration:${6 + Math.random() * 8}s;animation-delay:${-Math.random() * 14}s`;
+  bubblor.append(b);
+}
 fetch("evenemang.json").then(r => r.ok ? r.json() : { events: [] }).then(d => { events = d.events || []; tick(); }).catch(() => {});
 </script>
 </body>

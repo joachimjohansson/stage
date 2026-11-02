@@ -31,6 +31,12 @@ picture source{display:none}
 /* Affischen */
 /* Flaskgrönt: nästan svart grönt med ett ljusare sken mellan loggan och filmen, mörkare där den lilla texten står */
 .poster{background:radial-gradient(90% 50% at 50% 34%,#1A5212,#0F320B 45%,#071A04 80%,var(--flaska))}
+/* Bubblor som stiger genom det gröna bakom förstasidan; står svagt stilla vid minskad rörelse */
+.poster{position:relative;isolation:isolate;overflow:hidden}
+.bubblor{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1}
+.bubblor span{position:absolute;bottom:-60px;background:rgba(255,255,255,.18);border-radius:50%;will-change:transform,opacity;animation:stig linear infinite}
+@keyframes stig{0%{transform:translate3d(0,0,0);opacity:0}15%{opacity:.6}100%{transform:translate3d(0,-120vh,0);opacity:0}}
+@media (prefers-reduced-motion:reduce){.bubblor span{animation:none;opacity:.15;bottom:var(--y)}}
 #kassan{background:radial-gradient(80% 90% at 50% 100%,#10350A,var(--flaska) 75%)}
 .poster{padding:var(--sp-24) 0 var(--sp-32);text-align:center}
 nav{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 24px;border-bottom:1px solid var(--rule);padding-bottom:var(--sp-12);margin-bottom:var(--sp-32)}
