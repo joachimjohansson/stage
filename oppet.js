@@ -31,6 +31,21 @@ function stageStatus(now = new Date(), events = []) {
   return { open: false, day: (day + 1) % 7, event: tomorrow.event, opens: pad(tomorrow.hour), when: "i morgon" };
 }
 
+// Nästa dag med tidig öppning inom en vecka, räknat från i dag, så att besökaren ser den i förväg
+const DAG_NAMN = ["söndag", "måndag", "tisdag", "onsdag", "torsdag", "fredag", "lördag"];
+function stageNextEarly(now = new Date(), events = [], dagar = 7) {
+  for (let d = 0; d < dagar; d++) {
+    const date = new Date(now.getFullYear(), now.getMonth(), now.getDate() + d);
+    const o = stageOpening(date, events);
+    if (!o.event) continue;
+    // Dagens tidiga öppning är inte längre aktuell när baren har stängt för natten
+    if (d === 0 && now.getHours() + now.getMinutes() / 60 >= STAGE_HOURS[date.getDay()][1]) continue;
+    const label = d === 0 ? "Idag" : d === 1 ? "I morgon" : `Nu på ${DAG_NAMN[date.getDay()]}`;
+    return { label, opens: String(o.hour).padStart(2, "0"), event: o.event };
+  }
+  return null;
+}
+
 function stageLeft(min) {
   const t = Math.floor(min / 60), m = min % 60;
   return t ? `${t} h ${m} min` : `${m} min`;
@@ -50,4 +65,9 @@ console.assert(stageStatus(new Date(2026, 9, 31, 10, 0), testEv).opens === "13",
 console.assert(stageStatus(new Date(2026, 9, 31, 13, 30), testEv).open === true, "lör 13:30 öppet vid match");
 console.assert(stageStatus(new Date(2026, 9, 31, 1, 0), testEv).closes === "02", "natten innan påverkas inte");
 console.assert(stageStatus(new Date(2027, 2, 22, 8, 0), [{ date: "2027-03-22", time: "09:00", title: "Morgon" }]).opens === "12", "morgonevenemang öppnar tidigast 12");
+console.assert(stageNextEarly(new Date(2026, 9, 26, 12, 0), testEv).label === "Nu på lördag", "måndag ser lördagens match");
+console.assert(stageNextEarly(new Date(2026, 9, 30, 12, 0), testEv).label === "I morgon", "fredag ser matchen i morgon");
+console.assert(stageNextEarly(new Date(2026, 9, 31, 10, 0), testEv).opens === "13", "matchdagen visar 13");
+console.assert(stageNextEarly(new Date(2026, 10, 1, 12, 0), testEv) === null, "efter matchen inget");
+console.assert(stageNextEarly(new Date(2026, 9, 20, 12, 0), testEv) === null, "mer än en vecka bort syns inte");
 console.assert(stageStatus(new Date(2026, 9, 29, 15, 0), testEv).opens === "16" && !stageStatus(new Date(2026, 9, 29, 15, 0), testEv).event, "konsert 19:30 ändrar inget");

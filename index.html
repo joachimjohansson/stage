@@ -147,7 +147,14 @@ let events = [];
 const earlyDefault = early.textContent;
 function tick() {
   const s = stageStatus(new Date(), events);
-  early.textContent = s.event ? `Idag öppnar vi tidigare: ${s.event.title} börjar ${s.event.time} på Scandinavium.` : earlyDefault;
+  // Nästa tidiga öppning inom en vecka med anledningen under; annars den allmänna meningen
+  const tidig = stageNextEarly(new Date(), events);
+  if (tidig) {
+    const rad = document.createElement("span"), varfor = document.createElement("small");
+    rad.textContent = `${tidig.label} öppnar vi klockan ${tidig.opens}`;
+    varfor.textContent = `${tidig.event.title.replace(" - ", " mot ")}, ${tidig.event.time.replace(":", ".")} på Scandinavium`;
+    early.replaceChildren(rad, varfor);
+  } else early.textContent = earlyDefault;
   // Stängningstiden ligger alltid efter midnatt, så "ikväll" gäller även efter tolv
   tonight.textContent = s.open ? `Ikväll stänger vi klockan ${s.closes}` : `Idag öppnar vi klockan ${s.opens}`;
   // Raden som gäller idag först, sedan resten i veckoordning
