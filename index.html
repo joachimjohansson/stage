@@ -151,7 +151,9 @@ function tick() {
   const tidig = stageNextEarly(new Date(), events);
   if (tidig) {
     const rad = document.createElement("span"), varfor = document.createElement("small");
-    rad.textContent = `${tidig.label} öppnar vi klockan ${tidig.opens}`;
+    // På själva dagen står öppningstiden redan högst upp, så raden säger något annat
+    rad.textContent = tidig.label !== "Idag" ? `${tidig.label} öppnar vi klockan ${tidig.opens}`
+      : s.open && s.day === new Date().getDay() ? `Idag har vi öppet från ${tidig.opens}` : "Vi öppnar tidigare idag";
     varfor.textContent = `${tidig.event.title.replace(" - ", " mot ")}, ${tidig.event.time.replace(":", ".")} på Scandinavium`;
     early.replaceChildren(rad, varfor);
   } else early.textContent = earlyDefault;
@@ -162,6 +164,14 @@ function tick() {
   const rows = [...bill.children];
   const at = rows.findIndex(r => r.dataset.days.split(" ").includes(String(s.day)));
   bill.append(...rows.slice(at), ...rows.slice(0, at));
+  // Dagens rad visar den tidigare öppningen, övriga rader sina ordinarie tider
+  const idag = String(new Date().getDay());
+  rows.forEach(r => {
+    const tid = r.querySelector("b");
+    tid.dataset.ordinarie ??= tid.textContent;
+    tid.textContent = tidig && tidig.label === "Idag" && r.dataset.days.split(" ").includes(idag)
+      ? `${tidig.opens}-${tid.dataset.ordinarie.split("-")[1]}` : tid.dataset.ordinarie;
+  });
 }
 tick(); setInterval(tick, 30000);
 // Evenemang på Scandinavium hämtas dagligen av scripts/hamta-evenemang.mjs; utan filen gäller ordinarie tider
