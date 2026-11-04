@@ -32,14 +32,19 @@ picture source{display:none}
 /* Flaskgrönt: nästan svart grönt med ett ljusare sken mellan loggan och filmen, mörkare där den lilla texten står */
 .poster{background:radial-gradient(90% 50% at 50% 34%,#1A5212,#0F320B 45%,#071A04 80%,var(--flaska))}
 /* Bubblor som stiger genom det gröna bakom förstasidan; står svagt stilla vid minskad rörelse */
-.poster{position:relative;isolation:isolate;overflow:hidden}
+.poster{position:relative;isolation:isolate;overflow:hidden;--copper:#a6220b6e} /* mörkare rött bara på förstasidan: bandet och strecken */
 .bubblor{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1}
 .bubblor span{position:absolute;bottom:-60px;background:rgba(255,255,255,.18);border-radius:50%;will-change:transform,opacity;animation:stig linear infinite}
 @keyframes stig{0%{transform:translate3d(0,0,0);opacity:0}15%{opacity:.6}100%{transform:translate3d(0,-120vh,0);opacity:0}}
 @media (prefers-reduced-motion:reduce){.bubblor span{animation:none;opacity:.15;bottom:var(--y)}}
 #kassan{background:radial-gradient(80% 90% at 50% 100%,#10350A,var(--flaska) 75%)}
 .poster{padding:var(--sp-24) 0 var(--sp-32);text-align:center}
-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:4px 24px;border-bottom:1px solid var(--rule);padding-bottom:var(--sp-12);margin-bottom:var(--sp-32)}
+/* Menyraden följer med högst upp på hela sidan */
+:root{--topp-h:48px}
+.topp{position:sticky;top:0;z-index:10;background:rgba(6,23,4,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+nav{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:4px 24px;min-height:var(--topp-h);border-bottom:1px solid var(--rule)}
+nav .sprak{color:var(--mint)}
+section{scroll-margin-top:var(--topp-h)}
 nav a{text-decoration:none;font-weight:650}
 nav a:hover{color:var(--gold-light);text-decoration:underline}
 .tonight{width:min(100%,640px);margin-inline:auto;display:flex;justify-content:center;align-items:center;gap:14px}
@@ -82,8 +87,8 @@ section{padding-block:clamp(56px,8vw,104px)}
 .about img{border:3px solid var(--white)}
 
 /* Programmet = menyn, på ljus affischpapp */
-/* Menyn har egna typroller: brödtext 15, rätter och priser 20/630, kategorier 28/730 */
-.programme{--size-body:15px;--size-h3:20px;--w-h3:630;--size-h2:28px;--w-h2:730;font-size:var(--size-body);background:var(--white);color:var(--green-deep);font-weight:var(--w-body);line-height:1.55;letter-spacing:var(--t-body)}
+/* Menyn har egna typroller: brödtext 15, rätter och priser 18/630, kategorier 28/730 med samma spärrning som rätterna */
+.programme{--copper:#82200f;--t-h2:var(--t-h3);--size-body:15px;--size-h3:18px;--w-h3:630;--size-h2:28px;--w-h2:730;font-size:var(--size-body);background:var(--white);color:var(--green-deep);font-weight:var(--w-body);line-height:1.55;letter-spacing:var(--t-body)}
 .programme .title p{color:var(--copper)}
 .meta,.programme .title p,.dish em,footer{font-size:var(--size-meta);font-weight:var(--w-meta);letter-spacing:var(--t-meta)}
 .programme .ornament::before,.programme .ornament::after{background:rgba(14,26,18,.35)}
@@ -94,7 +99,7 @@ section{padding-block:clamp(56px,8vw,104px)}
 .dish .price{font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1.2;letter-spacing:var(--t-h3);color:var(--copper);white-space:nowrap;font-variant-numeric:tabular-nums}
 .dish-head{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--sp-16)}
 .dish p{margin-top:var(--sp-4);max-width:64ch;color:var(--green)}
-.dish em{line-height:1;font-style:normal;margin-left:var(--sp-8)}
+.dish em{line-height:1;font-style:normal;margin-left:var(--sp-8);color:var(--copper)}
 .cols{display:block}
 @media (min-width:761px){.cols{display:grid;grid-template-columns:1fr 1fr;column-gap:56px}}
 
@@ -132,8 +137,7 @@ footer{border-top:1px solid var(--white);padding:24px 0;text-align:center;color:
   :root{--size-h1:36px}
   .about,.taps{grid-template-columns:1fr}
   .gallery{grid-template-columns:1fr 1fr}
-  .poster{min-height:100svh;display:flex;padding-block:var(--sp-16)}
-  nav{padding-bottom:var(--sp-8);margin-bottom:var(--sp-16)}
+  .poster{min-height:calc(100svh - var(--topp-h));display:flex;padding-block:var(--sp-16)}
   .logo{margin:var(--sp-12) auto var(--sp-20)}
   .photo{margin:var(--sp-20) 0}
   .bill div{padding-block:var(--sp-8)}
