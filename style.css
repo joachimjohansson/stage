@@ -122,6 +122,11 @@ section{padding-block:clamp(56px,8vw,104px)}
 .boxoffice .big:hover{color:var(--gold-light)}
 .boxoffice p{max-width:52ch;margin-inline:auto}
 footer a{text-decoration:none}
+/* Frågan om andra språket ligger längst ner och flyttar inget på sidan */
+.sprakfraga{position:fixed;left:16px;right:16px;bottom:16px;z-index:20;max-width:460px;margin-inline:auto;display:flex;align-items:center;gap:12px;padding:10px 10px 10px 16px;background:var(--flaska);border:1px solid var(--rule);color:var(--white);font-size:var(--size-meta);box-shadow:var(--skugga)}
+.sprakfraga p{flex:1}
+.sprakfraga button{font:inherit;font-weight:650;cursor:pointer;border:0;padding:8px 14px;background:var(--gold-light);color:var(--flaska)}
+.sprakfraga button:last-child{background:none;color:var(--white);font-size:20px;line-height:1;padding:6px 10px}
 /* Instagram och Facebook: ikoner i textens färg, guld vid hovring */
 .sociala{display:inline-flex;gap:14px;align-items:center;vertical-align:middle}
 .sociala a{display:block;color:inherit;padding:4px}

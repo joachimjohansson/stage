@@ -222,6 +222,27 @@ if (plats) document.fonts.ready.then(() => {
   const r = del.getBoundingClientRect();
   scrollTo(0, r.top + scrollY - toppH() + Math.min(Math.max(plats.andel, 0), 1) * r.height);
 });
+// Erbjud andra språket när enhetens språk inte matchar sidan; ingen automatisk omdirigering, så sökmotorer ser båda sidorna
+const SPRAKVAL = "stagedoor-sprakval";
+function sprakfraga(enhetssprak) {
+  const engelskSida = document.documentElement.lang === "en", nordisk = /^(sv|nb|nn|no|da)\b/i.test(enhetssprak || "");
+  try { if (localStorage.getItem(SPRAKVAL)) return false; } catch {}
+  if (engelskSida ? !/^sv\b/i.test(enhetssprak || "") : nordisk) return false;
+  const t = engelskSida ? ["Sidan finns även på svenska.", "Svenska", "Stäng"] : ["This page is also available in English.", "English", "Close"];
+  const ruta = document.createElement("div"), text = document.createElement("p"), byt = document.createElement("button"), stang = document.createElement("button");
+  ruta.className = "sprakfraga"; ruta.setAttribute("role", "region"); ruta.setAttribute("aria-label", t[1]);
+  ruta.lang = engelskSida ? "sv" : "en";
+  text.textContent = t[0]; byt.textContent = t[1]; stang.textContent = "×"; stang.setAttribute("aria-label", t[2]);
+  const val = () => { try { localStorage.setItem(SPRAKVAL, "ja"); } catch {} ruta.remove(); };
+  byt.onclick = () => { val(); document.querySelector(".sprak").click(); };
+  stang.onclick = val;
+  ruta.append(text, byt, stang);
+  document.body.append(ruta);
+  return true;
+}
+// Den som själv väljer språk i menyraden har gjort sitt val
+document.querySelector(".sprak").addEventListener("click", () => { try { localStorage.setItem(SPRAKVAL, "ja"); } catch {} });
+sprakfraga((navigator.languages && navigator.languages[0]) || navigator.language);
 fetch("evenemang.json").then(r => r.ok ? r.json() : { events: [] }).then(d => { events = d.events || []; tick(); }).catch(() => {});
 </script>
 </body>
