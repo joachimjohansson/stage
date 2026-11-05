@@ -76,6 +76,9 @@ OVERSATTNING = [
     (">Boka bord<", ">Reserve a table<"),
     ("Ring eller mejla oss, så återkommer vi så snart vi kan.", "Call or email us and we’ll get back to you as soon as we can."),
     ("<small>Film: ", "<small>Video: "),
+    # Ortnamnet på engelska i synlig text; kartlänkarna och Googles uppgifter behåller Göteborg
+    (">Berzeliigatan 12, Göteborg</a>", ">Berzeliigatan 12, Gothenburg</a>"),
+    ("Berzeliigatan 12, 412 53 Göteborg<br>", "Berzeliigatan 12, 412 53 Gothenburg<br>"),
 ]
 
 # Svenska tecken som får finnas kvar: ortnamn och adresser
