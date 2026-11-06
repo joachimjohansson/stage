@@ -52,8 +52,10 @@ nav a:hover{color:var(--gold-light);text-decoration:underline}
 .logo{margin:var(--sp-12) auto var(--sp-24);width:min(100%,640px)}
 .logo svg{display:block;width:100%;height:auto}
 .band{display:block;width:min(100%,640px);margin-inline:auto;background:var(--copper);color:var(--white);font-family:var(--f);font-size:var(--size-h3);font-weight:var(--w-h3);line-height:1;letter-spacing:var(--t-h3);padding:.22em .7em .26em}
-.address{display:flex;justify-content:center;align-items:center;gap:clamp(10px,3vw,28px);flex-wrap:wrap;font-family:var(--f);font-size:var(--size-body);font-weight:var(--w-h3);line-height:1.4;letter-spacing:var(--t-body);margin-top:var(--sp-32)}
+.address{display:flex;justify-content:center;align-items:center;gap:clamp(4px,2vw,28px);flex-wrap:nowrap;font-family:var(--f);font-size:var(--size-body);font-weight:var(--w-h3);line-height:1.4;letter-spacing:var(--t-body);margin-top:var(--sp-32)}
 .address a,.addr{text-decoration:none}
+/* Adressen och ikonerna på en rad även på smala skärmar: texten krymper lite först under cirka 375 px */
+.address>a{white-space:nowrap;font-size:clamp(14px,4.3vw,var(--size-body))}
 .address a:hover,.addr:hover{color:var(--gold-light)}
 .photo{margin:var(--sp-24) 0 var(--sp-32);border:3px solid var(--white)}
 .photo img{width:100%;height:clamp(140px,24vh,480px);object-fit:cover;filter:saturate(.9) contrast(1.05)}
