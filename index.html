@@ -31,10 +31,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL@-15..0,300..1000,0..1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
-<header class="topp"><div class="wrap"><nav aria-label="Huvudmeny"><a href="#meny">Meny</a><a href="#scenen">Om</a><a href="#kassan">Kontakt</a><a class="sprak" href="en.html" lang="en" hreflang="en">English</a></nav></div></header>
+<header class="topp"><div class="wrap"><nav aria-label="Huvudmeny"><a href="#meny">Meny</a><a href="#om">Om</a><a href="#kontakt">Kontakt</a><a class="sprak" href="en.html" lang="en" hreflang="en">English</a></nav></div></header>
 <main>
   <div class="poster">
     <div class="bubblor" aria-hidden="true"></div>
@@ -44,12 +44,13 @@
       <p class="band">Bar & Restaurang</p>
       <div class="photo">
         <video muted loop playsinline preload="auto" poster="bilder/hallning-loop.jpg" src="bilder/hallning-loop.mp4" aria-label="Öl som hälls upp i ett glas"></video>
+        <button class="paus" type="button" aria-pressed="false"><span class="visuellt-dold">Pausa rörelse</span></button>
       </div>
       <div class="tider">
       <div class="bill">
-        <div data-days="0 1 2 3 4"><small>Söndag - torsdag</small><b>16-01</b></div>
-        <div data-days="5"><small>Fredag</small><b>15-02</b></div>
-        <div data-days="6"><small>Lördag</small><b>14-02</b></div>
+        <div data-days="0 1 2 3 4"><small>Söndag - torsdag</small><b data-oppnar="16" data-stanger="01">16-01</b></div>
+        <div data-days="5"><small>Fredag</small><b data-oppnar="15" data-stanger="02">15-02</b></div>
+        <div data-days="6"><small>Lördag</small><b data-oppnar="14" data-stanger="02">14-02</b></div>
       </div>
       <p class="early" id="early">Vi öppnar dessutom tidigare vid större evenemang.</p>
       </div>
@@ -62,46 +63,46 @@
       <div class="title">
         <div class="ornament"><span></span></div>
         <h2>Meny</h2>
-        <p>Innehåller (G) gluten · (L) laktos · (N) nötter</p>
       </div>
       <div id="matsedel">
-        <div class="act"><h3>Starters &amp; Sharers</h3><div class="cols">
-          <div class="dish"><div class="dish-head"><b>Gratinerade nachos<em>L</em></b><span class="price">129 kr</span></div>
-            <p>Serveras med gräddfil, tomatsalsa och pico de gallo</p></div>
-          <div class="dish"><div class="dish-head"><b>Gratinerade nachos med chiligryta<em>L</em></b><span class="price">149 kr</span></div>
-            <p>Med chiligryta på köttfärs, gräddfil, tomatsalsa och pico de gallo</p></div>
-          <div class="dish"><div class="dish-head"><b>Barsnacks<em>L</em></b><span class="price">139 kr</span></div>
-            <p>Ölkorv, oliver och goudaost med nachos och aïoli. Gjort för att delas</p></div>
-          <div class="dish"><div class="dish-head"><b>Mixplate<em>L G</em></b><span class="price">139 kr</span></div>
-            <p>Lökringar, mozzarella sticks och pommes frites med aïoli. Lite av varje att dela på</p></div>
-          <div class="dish"><div class="dish-head"><b>Hot Wings<em>L</em></b><span class="price">79 / 149 / 219 kr</span></div>
-            <p>Kycklingvingar i Frank’s Hot Sauce med aïoli som svalkar. Välj 6, 12 eller 18 vingar</p></div>
+        <div class="act"><h3>Att dela</h3><div class="cols">
+          <div class="dish"><div class="dish-head"><b>Gratinerade nachos</b><span class="price">129 kr</span></div>
+            <p>Serveras med gräddfil, tomatsalsa och pico de gallo<br><span class="allergener">Innehåller laktos</span></p></div>
+          <div class="dish"><div class="dish-head"><b>Gratinerade nachos med chiligryta</b><span class="price">149 kr</span></div>
+            <p>Med chiligryta på köttfärs, gräddfil, tomatsalsa och pico de gallo<br><span class="allergener">Innehåller laktos</span></p></div>
+          <div class="dish"><div class="dish-head"><b>Barsnacks</b><span class="price">139 kr</span></div>
+            <p>Ölkorv, oliver och goudaost med nachos och aïoli. Gjort för att delas<br><span class="allergener">Innehåller laktos</span></p></div>
+          <div class="dish"><div class="dish-head"><b lang="en">Mixplate</b><span class="price">139 kr</span></div>
+            <p>Lökringar, mozzarella sticks och pommes frites med aïoli. Lite av varje att dela på<br><span class="allergener">Innehåller laktos och gluten</span></p></div>
+          <div class="dish"><div class="dish-head"><b lang="en">Hot Wings</b><span class="price">79 / 149 / 219 kr</span></div>
+            <p>Kycklingvingar i Frank’s Hot Sauce med aïoli som svalkar<br><strong>Välj 6, 12 eller 18 vingar</strong><br><span class="allergener">Innehåller laktos</span></p></div>
         </div></div>
-        <div class="act"><h3>The Classics</h3><div class="cols">
-          <div class="dish"><div class="dish-head"><b>Smashed Burger Classic<em>G L</em></b><span class="price">199 kr</span></div>
-            <p>Smashad burgare av högrev och bringa med cheddarost och bacon glacerat i lönnsirap. Med pommes och aïoli<br><strong>Går att få vegansk</strong></p></div>
-          <div class="dish"><div class="dish-head"><b>Smashed Burger Mexican<em>G L</em></b><span class="price">199 kr</span></div>
-            <p>Smashad burgare av högrev och bringa med cheddarost, pico de gallo och Frank’s Hot Sauce. Med pommes och aïoli<br><strong>Går att få vegansk</strong></p></div>
-          <div class="dish"><div class="dish-head"><b>Baby Back Ribs<em>L</em></b><span class="price">299 kr</span></div>
-            <p>Baby back ribs med coleslaw, majs och pommes frites</p></div>
-          <div class="dish"><div class="dish-head"><b>Caesarsallad<em>G L</em></b><span class="price">199 kr</span></div>
-            <p>Klassisk caesar med romansallad, kyckling, bacon, tomat och krutonger, toppad med Grana Padano och caesardressing</p></div>
-          <div class="dish"><div class="dish-head"><b>Pasta med kyckling<em>G L</em></b><span class="price">199 kr</span></div>
-            <p>Penne i krämig vitvinssås med kyckling, lök och en hetta av chili</p></div>
-          <div class="dish"><div class="dish-head"><b>Fish &amp; Chips<em>G L</em></b><span class="price">199 kr</span></div>
-            <p>Friterad fisk och pommes frites med remouladsås</p></div>
+        <div class="act"><h3>Klassikerna</h3><div class="cols">
+          <div class="dish"><div class="dish-head"><b lang="en">Smashed Burger Classic</b><span class="price">199 kr</span></div>
+            <p>Smashad burgare av högrev och bringa med cheddarost och bacon glacerat i lönnsirap. Med pommes och aïoli<br><strong>Går att få vegansk</strong><br><span class="allergener">Innehåller gluten och laktos</span></p></div>
+          <div class="dish"><div class="dish-head"><b lang="en">Smashed Burger Mexican</b><span class="price">199 kr</span></div>
+            <p>Smashad burgare av högrev och bringa med cheddarost, pico de gallo och Frank’s Hot Sauce. Med pommes och aïoli<br><strong>Går att få vegansk</strong><br><span class="allergener">Innehåller gluten och laktos</span></p></div>
+          <div class="dish"><div class="dish-head"><b lang="en">Baby Back Ribs</b><span class="price">299 kr</span></div>
+            <p>Baby back ribs med coleslaw, majs och pommes frites<br><span class="allergener">Innehåller laktos</span></p></div>
+          <div class="dish"><div class="dish-head"><b>Caesarsallad</b><span class="price">199 kr</span></div>
+            <p>Klassisk caesar med romansallad, kyckling, bacon, tomat och krutonger, toppad med Grana Padano och caesardressing<br><span class="allergener">Innehåller gluten och laktos</span></p></div>
+          <div class="dish"><div class="dish-head"><b>Pasta med kyckling</b><span class="price">199 kr</span></div>
+            <p>Penne i krämig vitvinssås med kyckling, lök och en hetta av chili<br><span class="allergener">Innehåller gluten och laktos</span></p></div>
+          <div class="dish"><div class="dish-head"><b lang="en">Fish &amp; Chips</b><span class="price">199 kr</span></div>
+            <p>Friterad fisk och pommes frites med remouladsås<br><span class="allergener">Innehåller gluten och laktos</span></p></div>
         </div></div>
-        <div class="act"><h3>Desserts</h3><div class="cols">
-          <div class="dish"><div class="dish-head"><b>Friterad camembert<em>G L N</em></b><span class="price">99 kr</span></div>
-            <p>Friterad camembert med hjortronsylt och persilja</p></div>
-          <div class="dish"><div class="dish-head"><b>Chokladglassbakelse<em>G L N</em></b><span class="price">119 kr</span></div>
-            <p>Chokladglass med hasselnöt och sabayonne</p></div>
+        <div class="act"><h3>Desserter</h3><div class="cols">
+          <div class="dish"><div class="dish-head"><b>Friterad camembert</b><span class="price">99 kr</span></div>
+            <p>Friterad camembert med hjortronsylt och persilja<br><span class="allergener">Innehåller gluten, laktos och nötter</span></p></div>
+          <div class="dish"><div class="dish-head"><b>Chokladglassbakelse</b><span class="price">119 kr</span></div>
+            <p>Chokladglass med hasselnöt och sabayonne<br><span class="allergener">Innehåller gluten, laktos och nötter</span></p></div>
         </div></div>
       </div>
     </div>
   </section>
 
-  <section id="scenen">
+  <section id="om" aria-labelledby="om-rubrik">
+    <h2 id="om-rubrik" class="visuellt-dold">Om Stage Door</h2>
     <div class="wrap about">
       <p>Precis som namnet antyder är Stage Door ett populärt inneställe för stadens alla musik-, teater- och varietéartister. Här kan Du alltid äta en bit mat från vår prisvärda meny, njuta ett glas gott vin eller varför inte bara en stilla öl i vår trivsamma bar. Vällagad mat, utvalda viner och en gemytlig atmosfär gör att vi tror att Du kommer få en trevlig kväll!</p>
       <picture><source srcset="bilder/untitled-hdr2-800.avif 800w, bilder/untitled-hdr2.avif 1200w" sizes="(min-width:761px) 50vw, 100vw" type="image/avif"><img src="original/bilder/untitled-hdr2.jpg" alt="Matsalen på Stage Door med väggar fulla av inramade artistporträtt" width="1200" height="476" loading="lazy" decoding="async"></picture>
@@ -125,7 +126,7 @@
     </div>
   </section>
 
-  <section id="kassan" class="boxoffice">
+  <section id="kontakt" class="boxoffice">
     <div class="wrap">
       <div class="ornament"><span></span></div>
       <h2 style="font-family:var(--f);font-size:var(--size-h1);font-weight:var(--w-h1);line-height:1;letter-spacing:var(--t-h1);color:var(--gold-light)">Boka bord</h2>
@@ -154,6 +155,8 @@ const T = document.documentElement.lang === "en" ? {
   stanger: h => `Tonight we close at ${ampm(h)}`,
   oppnarIdag: h => `Today we open at ${ampm(h)}`,
   intervall: (o, c) => `${ampm(o)} – ${ampm(c)}`,
+  intervallTal: (o, c) => `${ampm(o)} to ${ampm(c)}`,
+  pausa: "Pause motion", spela: "Play motion",
 } : {
   dag: (d, v) => d === 0 ? "Idag" : d === 1 ? "I morgon" : `Nu på ${["söndag", "måndag", "tisdag", "onsdag", "torsdag", "fredag", "lördag"][v]}`,
   oppnar: (dag, h) => `${dag} öppnar vi klockan ${h}`,
@@ -163,6 +166,8 @@ const T = document.documentElement.lang === "en" ? {
   stanger: h => `Ikväll stänger vi klockan ${h}`,
   oppnarIdag: h => `Idag öppnar vi klockan ${h}`,
   intervall: (o, c) => `${o}-${c}`,
+  intervallTal: (o, c) => `${o} till ${c}`,
+  pausa: "Pausa rörelse", spela: "Spela upp rörelse",
 };
 function tick() {
   const s = stageStatus(new Date(), events);
@@ -177,7 +182,8 @@ function tick() {
     early.replaceChildren(rad, varfor);
   } else early.textContent = earlyDefault;
   // Stängningstiden ligger alltid efter midnatt, så "ikväll" gäller även efter tolv
-  tonight.textContent = s.open ? T.stanger(s.closes) : T.oppnarIdag(s.opens);
+  const raden = s.open ? T.stanger(s.closes) : T.oppnarIdag(s.opens);
+  if (tonight.textContent !== raden) tonight.textContent = raden;
   // Raden som gäller idag först, sedan resten i veckoordning
   const bill = document.querySelector(".bill");
   const rows = [...bill.children];
@@ -186,17 +192,25 @@ function tick() {
   // Dagens rad visar den tidigare öppningen, övriga rader sina ordinarie tider
   const idag = String(new Date().getDay());
   rows.forEach(r => {
-    const tid = r.querySelector("b");
-    tid.dataset.ordinarie ??= tid.textContent;
-    tid.textContent = idagTidig && r.dataset.days.split(" ").includes(idag)
-      ? T.intervall(tidig.opens, String(STAGE_HOURS[+idag][1] % 24).padStart(2, "0")) : tid.dataset.ordinarie;
+    const tid = r.querySelector("b"), c = tid.dataset.stanger;
+    const o = idagTidig && r.dataset.days.split(" ").includes(idag) ? tidig.opens : tid.dataset.oppnar;
+    const ny = `<span aria-hidden="true">${T.intervall(o, c)}</span><span class="visuellt-dold">${T.intervallTal(o, c)}</span>`;
+    if (tid.innerHTML !== ny) tid.innerHTML = ny;
   });
 }
 tick(); setInterval(tick, 30000);
 // Evenemang på Scandinavium hämtas dagligen av scripts/hamta-evenemang.mjs; utan filen gäller ordinarie tider
 // Filmen loopar; med minskad rörelse står den still på första bildrutan
-const hallning = document.querySelector(".photo video");
-if (!matchMedia("(prefers-reduced-motion: reduce)").matches) hallning.play().catch(() => {});
+const hallning = document.querySelector(".photo video"), paus = document.querySelector(".paus");
+// Ett klick på filmen stoppar filmen och bubblorna (WCAG 2.2.2). Klickytan är en osynlig knapp över filmen, så den fungerar även med tangentbord och skärmläsare; aria-pressed = pausad
+function satt_rorelse(pa) {
+  document.documentElement.classList.toggle("stilla", !pa);
+  paus.setAttribute("aria-pressed", String(!pa));
+  paus.lastElementChild.textContent = pa ? T.pausa : T.spela;
+  if (pa) hallning.play().catch(() => {}); else hallning.pause();
+}
+paus.onclick = () => satt_rorelse(paus.getAttribute("aria-pressed") === "true");
+satt_rorelse(!matchMedia("(prefers-reduced-motion: reduce)").matches);
 // Bubblor som stiger i förstasidans bakgrund, med slumpad storlek, läge och fart
 const bubblor = document.querySelector(".bubblor");
 for (let i = 0; i < 36; i++) {
@@ -228,9 +242,9 @@ function sprakfraga(enhetssprak) {
   const engelskSida = document.documentElement.lang === "en", nordisk = /^(sv|nb|nn|no|da)\b/i.test(enhetssprak || "");
   try { if (localStorage.getItem(SPRAKVAL)) return false; } catch {}
   if (engelskSida ? !/^sv\b/i.test(enhetssprak || "") : nordisk) return false;
-  const t = engelskSida ? ["Sidan finns även på svenska.", "Svenska", "Stäng"] : ["This page is also available in English.", "English", "Close"];
+  const t = engelskSida ? ["Sidan finns även på svenska.", "Svenska", "Stäng", "Språkval"] : ["This page is also available in English.", "English", "Close", "Language"];
   const ruta = document.createElement("div"), text = document.createElement("p"), byt = document.createElement("button"), stang = document.createElement("button");
-  ruta.className = "sprakfraga"; ruta.setAttribute("role", "region"); ruta.setAttribute("aria-label", t[1]);
+  ruta.className = "sprakfraga"; ruta.setAttribute("role", "region"); ruta.setAttribute("aria-label", t[3]);
   ruta.lang = engelskSida ? "sv" : "en";
   text.textContent = t[0]; byt.textContent = t[1]; stang.textContent = "×"; stang.setAttribute("aria-label", t[2]);
   const val = () => { try { localStorage.setItem(SPRAKVAL, "ja"); } catch {} ruta.remove(); };

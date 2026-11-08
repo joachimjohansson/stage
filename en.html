@@ -31,10 +31,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL@-15..0,300..1000,0..1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
-<header class="topp"><div class="wrap"><nav aria-label="Main menu"><a href="#meny">Menu</a><a href="#scenen">About</a><a href="#kassan">Contact</a><a class="sprak" href="./" lang="sv" hreflang="sv">Svenska</a></nav></div></header>
+<header class="topp"><div class="wrap"><nav aria-label="Main menu"><a href="#meny">Menu</a><a href="#om">About</a><a href="#kontakt">Contact</a><a class="sprak" href="./" lang="sv" hreflang="sv">Svenska</a></nav></div></header>
 <main>
   <div class="poster">
     <div class="bubblor" aria-hidden="true"></div>
@@ -44,12 +44,13 @@
       <p class="band">Bar & Restaurant</p>
       <div class="photo">
         <video muted loop playsinline preload="auto" poster="bilder/hallning-loop.jpg" src="bilder/hallning-loop.mp4" aria-label="Beer being poured into a glass"></video>
+        <button class="paus" type="button" aria-pressed="false"><span class="visuellt-dold">Pause motion</span></button>
       </div>
       <div class="tider">
       <div class="bill">
-        <div data-days="0 1 2 3 4"><small>Sunday–Thursday</small><b>4 PM – 1 AM</b></div>
-        <div data-days="5"><small>Friday</small><b>3 PM – 2 AM</b></div>
-        <div data-days="6"><small>Saturday</small><b>2 PM – 2 AM</b></div>
+        <div data-days="0 1 2 3 4"><small>Sunday–Thursday</small><b data-oppnar="16" data-stanger="01">4 PM – 1 AM</b></div>
+        <div data-days="5"><small>Friday</small><b data-oppnar="15" data-stanger="02">3 PM – 2 AM</b></div>
+        <div data-days="6"><small>Saturday</small><b data-oppnar="14" data-stanger="02">2 PM – 2 AM</b></div>
       </div>
       <p class="early" id="early">We also open earlier during major events.</p>
       </div>
@@ -62,46 +63,46 @@
       <div class="title">
         <div class="ornament"><span></span></div>
         <h2>Menu</h2>
-        <p>Contains (G) gluten · (L) lactose · (N) nuts</p>
       </div>
       <div id="matsedel">
-        <div class="act"><h3>Appetizers</h3><div class="cols">
-          <div class="dish"><div class="dish-head"><b>Baked nachos<em>L</em></b><span class="price">129 kr</span></div>
-            <p>Served with sour cream, tomato salsa, and pico de gallo</p></div>
-          <div class="dish"><div class="dish-head"><b>Baked nachos with chili<em>L</em></b><span class="price">149 kr</span></div>
-            <p>With beef chili, sour cream, tomato salsa, and pico de gallo</p></div>
-          <div class="dish"><div class="dish-head"><b>Bar snacks<em>L</em></b><span class="price">139 kr</span></div>
-            <p>Beer sausage, olives, and Gouda with nachos and aioli. Made for sharing</p></div>
-          <div class="dish"><div class="dish-head"><b>Mixplate<em>L G</em></b><span class="price">139 kr</span></div>
-            <p>Onion rings, mozzarella sticks, and french fries with aioli. A little bit of everything to share</p></div>
-          <div class="dish"><div class="dish-head"><b>Hot Wings<em>L</em></b><span class="price">79 / 149 / 219 kr</span></div>
-            <p>Chicken wings in Frank’s Hot Sauce with cooling aioli. Choose 6, 12, or 18 wings</p></div>
+        <div class="act"><h3>For Sharing</h3><div class="cols">
+          <div class="dish"><div class="dish-head"><b>Baked nachos</b><span class="price">129 kr</span></div>
+            <p>Served with sour cream, tomato salsa, and pico de gallo<br><span class="allergener">Contains lactose</span></p></div>
+          <div class="dish"><div class="dish-head"><b>Baked nachos with chili</b><span class="price">149 kr</span></div>
+            <p>With beef chili, sour cream, tomato salsa, and pico de gallo<br><span class="allergener">Contains lactose</span></p></div>
+          <div class="dish"><div class="dish-head"><b>Bar snacks</b><span class="price">139 kr</span></div>
+            <p>Beer sausage, olives, and Gouda with nachos and aioli. Made for sharing<br><span class="allergener">Contains lactose</span></p></div>
+          <div class="dish"><div class="dish-head"><b lang="en">Mixplate</b><span class="price">139 kr</span></div>
+            <p>Onion rings, mozzarella sticks, and french fries with aioli. A little bit of everything to share<br><span class="allergener">Contains lactose and gluten</span></p></div>
+          <div class="dish"><div class="dish-head"><b lang="en">Hot Wings</b><span class="price">79 / 149 / 219 kr</span></div>
+            <p>Chicken wings in Frank’s Hot Sauce with cooling aioli<br><strong>Choose 6, 12, or 18 wings</strong><br><span class="allergener">Contains lactose</span></p></div>
         </div></div>
         <div class="act"><h3>The Classics</h3><div class="cols">
-          <div class="dish"><div class="dish-head"><b>Smashed Burger Classic<em>G L</em></b><span class="price">199 kr</span></div>
-            <p>Smashed chuck and brisket burger with cheddar and maple-glazed bacon. Served with french fries and aioli<br><strong>Vegan option available</strong></p></div>
-          <div class="dish"><div class="dish-head"><b>Smashed Burger Mexican<em>G L</em></b><span class="price">199 kr</span></div>
-            <p>Smashed chuck and brisket burger with cheddar, pico de gallo, and Frank’s Hot Sauce. Served with french fries and aioli<br><strong>Vegan option available</strong></p></div>
-          <div class="dish"><div class="dish-head"><b>Baby Back Ribs<em>L</em></b><span class="price">299 kr</span></div>
-            <p>Baby back ribs with coleslaw, corn, and french fries</p></div>
-          <div class="dish"><div class="dish-head"><b>Caesar salad<em>G L</em></b><span class="price">199 kr</span></div>
-            <p>Classic Caesar with romaine, chicken, bacon, tomato, and croutons, topped with Grana Padano and Caesar dressing</p></div>
-          <div class="dish"><div class="dish-head"><b>Chicken pasta<em>G L</em></b><span class="price">199 kr</span></div>
-            <p>Penne in a creamy white wine sauce with chicken, onion, and a kick of chili</p></div>
-          <div class="dish"><div class="dish-head"><b>Fish &amp; Chips<em>G L</em></b><span class="price">199 kr</span></div>
-            <p>Fried fish and french fries with remoulade</p></div>
+          <div class="dish"><div class="dish-head"><b lang="en">Smashed Burger Classic</b><span class="price">199 kr</span></div>
+            <p>Smashed chuck and brisket burger with cheddar and maple-glazed bacon. Served with french fries and aioli<br><strong>Vegan option available</strong><br><span class="allergener">Contains gluten and lactose</span></p></div>
+          <div class="dish"><div class="dish-head"><b lang="en">Smashed Burger Mexican</b><span class="price">199 kr</span></div>
+            <p>Smashed chuck and brisket burger with cheddar, pico de gallo, and Frank’s Hot Sauce. Served with french fries and aioli<br><strong>Vegan option available</strong><br><span class="allergener">Contains gluten and lactose</span></p></div>
+          <div class="dish"><div class="dish-head"><b lang="en">Baby Back Ribs</b><span class="price">299 kr</span></div>
+            <p>Baby back ribs with coleslaw, corn, and french fries<br><span class="allergener">Contains lactose</span></p></div>
+          <div class="dish"><div class="dish-head"><b>Caesar salad</b><span class="price">199 kr</span></div>
+            <p>Classic Caesar with romaine, chicken, bacon, tomato, and croutons, topped with Grana Padano and Caesar dressing<br><span class="allergener">Contains gluten and lactose</span></p></div>
+          <div class="dish"><div class="dish-head"><b>Chicken pasta</b><span class="price">199 kr</span></div>
+            <p>Penne in a creamy white wine sauce with chicken, onion, and a kick of chili<br><span class="allergener">Contains gluten and lactose</span></p></div>
+          <div class="dish"><div class="dish-head"><b lang="en">Fish &amp; Chips</b><span class="price">199 kr</span></div>
+            <p>Fried fish and french fries with remoulade<br><span class="allergener">Contains gluten and lactose</span></p></div>
         </div></div>
         <div class="act"><h3>Desserts</h3><div class="cols">
-          <div class="dish"><div class="dish-head"><b>Deep-fried Camembert<em>G L N</em></b><span class="price">99 kr</span></div>
-            <p>Deep-fried Camembert with cloudberry jam and parsley</p></div>
-          <div class="dish"><div class="dish-head"><b>Chocolate ice cream cake<em>G L N</em></b><span class="price">119 kr</span></div>
-            <p>Chocolate ice cream with hazelnut and sabayon</p></div>
+          <div class="dish"><div class="dish-head"><b>Deep-fried Camembert</b><span class="price">99 kr</span></div>
+            <p>Deep-fried Camembert with cloudberry jam and parsley<br><span class="allergener">Contains gluten, lactose, and nuts</span></p></div>
+          <div class="dish"><div class="dish-head"><b>Chocolate ice cream cake</b><span class="price">119 kr</span></div>
+            <p>Chocolate ice cream with hazelnut and sabayon<br><span class="allergener">Contains gluten, lactose, and nuts</span></p></div>
         </div></div>
       </div>
     </div>
   </section>
 
-  <section id="scenen">
+  <section id="om" aria-labelledby="om-rubrik">
+    <h2 id="om-rubrik" class="visuellt-dold">About Stage Door</h2>
     <div class="wrap about">
       <p>Just as the name suggests, Stage Door is a popular haunt for the city’s musicians, actors, and variety performers. Here you can always have a bite from our affordable menu, enjoy a glass of good wine, or just grab a quiet beer at our cozy bar. Good food, selected wines, and a warm, friendly atmosphere mean we think you’ll have a great night!</p>
       <picture><source srcset="bilder/untitled-hdr2-800.avif 800w, bilder/untitled-hdr2.avif 1200w" sizes="(min-width:761px) 50vw, 100vw" type="image/avif"><img src="original/bilder/untitled-hdr2.jpg" alt="The dining room at Stage Door, with walls full of framed artist portraits" width="1200" height="476" loading="lazy" decoding="async"></picture>
@@ -125,7 +126,7 @@
     </div>
   </section>
 
-  <section id="kassan" class="boxoffice">
+  <section id="kontakt" class="boxoffice">
     <div class="wrap">
       <div class="ornament"><span></span></div>
       <h2 style="font-family:var(--f);font-size:var(--size-h1);font-weight:var(--w-h1);line-height:1;letter-spacing:var(--t-h1);color:var(--gold-light)">Reserve a table</h2>
@@ -154,6 +155,8 @@ const T = document.documentElement.lang === "en" ? {
   stanger: h => `Tonight we close at ${ampm(h)}`,
   oppnarIdag: h => `Today we open at ${ampm(h)}`,
   intervall: (o, c) => `${ampm(o)} – ${ampm(c)}`,
+  intervallTal: (o, c) => `${ampm(o)} to ${ampm(c)}`,
+  pausa: "Pause motion", spela: "Play motion",
 } : {
   dag: (d, v) => d === 0 ? "Idag" : d === 1 ? "I morgon" : `Nu på ${["söndag", "måndag", "tisdag", "onsdag", "torsdag", "fredag", "lördag"][v]}`,
   oppnar: (dag, h) => `${dag} öppnar vi klockan ${h}`,
@@ -163,6 +166,8 @@ const T = document.documentElement.lang === "en" ? {
   stanger: h => `Ikväll stänger vi klockan ${h}`,
   oppnarIdag: h => `Idag öppnar vi klockan ${h}`,
   intervall: (o, c) => `${o}-${c}`,
+  intervallTal: (o, c) => `${o} till ${c}`,
+  pausa: "Pausa rörelse", spela: "Spela upp rörelse",
 };
 function tick() {
   const s = stageStatus(new Date(), events);
@@ -177,7 +182,8 @@ function tick() {
     early.replaceChildren(rad, varfor);
   } else early.textContent = earlyDefault;
   // Stängningstiden ligger alltid efter midnatt, så "ikväll" gäller även efter tolv
-  tonight.textContent = s.open ? T.stanger(s.closes) : T.oppnarIdag(s.opens);
+  const raden = s.open ? T.stanger(s.closes) : T.oppnarIdag(s.opens);
+  if (tonight.textContent !== raden) tonight.textContent = raden;
   // Raden som gäller idag först, sedan resten i veckoordning
   const bill = document.querySelector(".bill");
   const rows = [...bill.children];
@@ -186,17 +192,25 @@ function tick() {
   // Dagens rad visar den tidigare öppningen, övriga rader sina ordinarie tider
   const idag = String(new Date().getDay());
   rows.forEach(r => {
-    const tid = r.querySelector("b");
-    tid.dataset.ordinarie ??= tid.textContent;
-    tid.textContent = idagTidig && r.dataset.days.split(" ").includes(idag)
-      ? T.intervall(tidig.opens, String(STAGE_HOURS[+idag][1] % 24).padStart(2, "0")) : tid.dataset.ordinarie;
+    const tid = r.querySelector("b"), c = tid.dataset.stanger;
+    const o = idagTidig && r.dataset.days.split(" ").includes(idag) ? tidig.opens : tid.dataset.oppnar;
+    const ny = `<span aria-hidden="true">${T.intervall(o, c)}</span><span class="visuellt-dold">${T.intervallTal(o, c)}</span>`;
+    if (tid.innerHTML !== ny) tid.innerHTML = ny;
   });
 }
 tick(); setInterval(tick, 30000);
 // Evenemang på Scandinavium hämtas dagligen av scripts/hamta-evenemang.mjs; utan filen gäller ordinarie tider
 // Filmen loopar; med minskad rörelse står den still på första bildrutan
-const hallning = document.querySelector(".photo video");
-if (!matchMedia("(prefers-reduced-motion: reduce)").matches) hallning.play().catch(() => {});
+const hallning = document.querySelector(".photo video"), paus = document.querySelector(".paus");
+// Ett klick på filmen stoppar filmen och bubblorna (WCAG 2.2.2). Klickytan är en osynlig knapp över filmen, så den fungerar även med tangentbord och skärmläsare; aria-pressed = pausad
+function satt_rorelse(pa) {
+  document.documentElement.classList.toggle("stilla", !pa);
+  paus.setAttribute("aria-pressed", String(!pa));
+  paus.lastElementChild.textContent = pa ? T.pausa : T.spela;
+  if (pa) hallning.play().catch(() => {}); else hallning.pause();
+}
+paus.onclick = () => satt_rorelse(paus.getAttribute("aria-pressed") === "true");
+satt_rorelse(!matchMedia("(prefers-reduced-motion: reduce)").matches);
 // Bubblor som stiger i förstasidans bakgrund, med slumpad storlek, läge och fart
 const bubblor = document.querySelector(".bubblor");
 for (let i = 0; i < 36; i++) {
@@ -228,9 +242,9 @@ function sprakfraga(enhetssprak) {
   const engelskSida = document.documentElement.lang === "en", nordisk = /^(sv|nb|nn|no|da)\b/i.test(enhetssprak || "");
   try { if (localStorage.getItem(SPRAKVAL)) return false; } catch {}
   if (engelskSida ? !/^sv\b/i.test(enhetssprak || "") : nordisk) return false;
-  const t = engelskSida ? ["Sidan finns även på svenska.", "Svenska", "Stäng"] : ["This page is also available in English.", "English", "Close"];
+  const t = engelskSida ? ["Sidan finns även på svenska.", "Svenska", "Stäng", "Språkval"] : ["This page is also available in English.", "English", "Close", "Language"];
   const ruta = document.createElement("div"), text = document.createElement("p"), byt = document.createElement("button"), stang = document.createElement("button");
-  ruta.className = "sprakfraga"; ruta.setAttribute("role", "region"); ruta.setAttribute("aria-label", t[1]);
+  ruta.className = "sprakfraga"; ruta.setAttribute("role", "region"); ruta.setAttribute("aria-label", t[3]);
   ruta.lang = engelskSida ? "sv" : "en";
   text.textContent = t[0]; byt.textContent = t[1]; stang.textContent = "×"; stang.setAttribute("aria-label", t[2]);
   const val = () => { try { localStorage.setItem(SPRAKVAL, "ja"); } catch {} ruta.remove(); };
