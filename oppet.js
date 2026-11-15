@@ -24,8 +24,8 @@ function stageStatus(now = new Date(), events = []) {
   const yClose = STAGE_HOURS[(day + 6) % 7][1];
   const pad = n => String(n % 24).padStart(2, "0");
   // day = öppningsdagen som gäller just nu; efter midnatt är det fortfarande gårdagens kväll
-  if (h < yClose - 24) return { open: true, day: (day + 6) % 7, closes: pad(yClose), minutesLeft: Math.round((yClose - 24 - h) * 60) };
-  if (h >= open && h < close) return { open: true, day, event, closes: pad(close), minutesLeft: Math.round((close - h) * 60) };
+  if (h < yClose - 24) return { open: true, day: (day + 6) % 7, closes: pad(yClose) };
+  if (h >= open && h < close) return { open: true, day, event, closes: pad(close) };
   if (h < open) return { open: false, day, event, opens: pad(open), when: "i dag" };
   const tomorrow = stageOpening(new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1), events);
   return { open: false, day: (day + 1) % 7, event: tomorrow.event, opens: pad(tomorrow.hour), when: "i morgon" };
@@ -43,11 +43,6 @@ function stageNextEarly(now = new Date(), events = [], dagar = 7) {
     return { dagar: d, veckodag: date.getDay(), opens: String(o.hour).padStart(2, "0"), event: o.event };
   }
   return null;
-}
-
-function stageLeft(min) {
-  const t = Math.floor(min / 60), m = min % 60;
-  return t ? `${t} h ${m} min` : `${m} min`;
 }
 
 // Självtest (2026-10-25 är en söndag)

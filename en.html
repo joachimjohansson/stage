@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL@-15..0,300..1000,0..1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=7">
+<link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
 <header class="topp"><div class="wrap"><nav aria-label="Main menu"><a href="#meny">Menu</a><a href="#om">About</a><a href="#kontakt">Contact</a><a class="sprak" href="./" lang="sv" hreflang="sv">Svenska</a></nav></div></header>
@@ -169,15 +169,18 @@ const T = document.documentElement.lang === "en" ? {
   intervallTal: (o, c) => `${o} till ${c}`,
   pausa: "Pausa rörelse", spela: "Spela upp rörelse",
 };
+// Raden i öppettiderna som gäller veckodagen dag (0 = söndag)
+const galler = (r, dag) => r.dataset.days.split(" ").includes(String(dag));
 function tick() {
-  const s = stageStatus(new Date(), events);
+  const nu = new Date(), s = stageStatus(nu, events);
   // Nästa tidiga öppning inom en vecka med anledningen under; annars den allmänna meningen
-  const tidig = stageNextEarly(new Date(), events), idagTidig = tidig && tidig.dagar === 0;
+  const tidig = stageNextEarly(nu, events), idagTidig = tidig && tidig.dagar === 0;
   if (tidig) {
     const rad = document.createElement("span"), varfor = document.createElement("small");
     // På själva dagen står öppningstiden redan högst upp, så raden säger något annat
-    rad.textContent = !idagTidig ? T.oppnar(T.dag(tidig.dagar, tidig.veckodag), tidig.opens)
-      : s.open && s.day === new Date().getDay() ? T.oppetFran(tidig.opens) : T.tidigareIdag;
+    if (!idagTidig) rad.textContent = T.oppnar(T.dag(tidig.dagar, tidig.veckodag), tidig.opens);
+    else if (s.open && s.day === nu.getDay()) rad.textContent = T.oppetFran(tidig.opens);
+    else rad.textContent = T.tidigareIdag;
     varfor.textContent = T.evenemang(tidig.event.title, tidig.event.time);
     early.replaceChildren(rad, varfor);
   } else early.textContent = earlyDefault;
@@ -187,19 +190,17 @@ function tick() {
   // Raden som gäller idag först, sedan resten i veckoordning
   const bill = document.querySelector(".bill");
   const rows = [...bill.children];
-  const at = rows.findIndex(r => r.dataset.days.split(" ").includes(String(s.day)));
+  const at = rows.findIndex(r => galler(r, s.day));
   bill.append(...rows.slice(at), ...rows.slice(0, at));
   // Dagens rad visar den tidigare öppningen, övriga rader sina ordinarie tider
-  const idag = String(new Date().getDay());
   rows.forEach(r => {
     const tid = r.querySelector("b"), c = tid.dataset.stanger;
-    const o = idagTidig && r.dataset.days.split(" ").includes(idag) ? tidig.opens : tid.dataset.oppnar;
+    const o = idagTidig && galler(r, nu.getDay()) ? tidig.opens : tid.dataset.oppnar;
     const ny = `<span aria-hidden="true">${T.intervall(o, c)}</span><span class="visuellt-dold">${T.intervallTal(o, c)}</span>`;
     if (tid.innerHTML !== ny) tid.innerHTML = ny;
   });
 }
 tick(); setInterval(tick, 30000);
-// Evenemang på Scandinavium hämtas dagligen av scripts/hamta-evenemang.mjs; utan filen gäller ordinarie tider
 // Filmen loopar; med minskad rörelse står den still på första bildrutan
 const hallning = document.querySelector(".photo video"), paus = document.querySelector(".paus");
 // Ett klick på filmen stoppar filmen och bubblorna (WCAG 2.2.2). Klickytan är en osynlig knapp över filmen, så den fungerar även med tangentbord och skärmläsare.
@@ -210,7 +211,7 @@ function satt_rorelse(pa) {
   if (pa) hallning.play().catch(() => {}); else hallning.pause();
 }
 paus.onclick = () => satt_rorelse(document.documentElement.classList.contains("stilla"));
-// 4. Följ inställningen för minskad rörelse även om den ändras medan sidan är öppen
+// Följ inställningen för minskad rörelse även om den ändras medan sidan är öppen
 const minskad = matchMedia("(prefers-reduced-motion: reduce)");
 minskad.addEventListener("change", e => satt_rorelse(!e.matches));
 satt_rorelse(!minskad.matches);
@@ -260,6 +261,7 @@ function sprakfraga(enhetssprak) {
 // Den som själv väljer språk i menyraden har gjort sitt val
 document.querySelector(".sprak").addEventListener("click", () => { try { localStorage.setItem(SPRAKVAL, "ja"); } catch {} });
 sprakfraga((navigator.languages && navigator.languages[0]) || navigator.language);
+// Evenemang på Scandinavium hämtas dagligen av scripts/hamta-evenemang.mjs; utan filen gäller ordinarie tider
 fetch("evenemang.json").then(r => r.ok ? r.json() : { events: [] }).then(d => { events = d.events || []; tick(); }).catch(() => {});
 </script>
 </body>
